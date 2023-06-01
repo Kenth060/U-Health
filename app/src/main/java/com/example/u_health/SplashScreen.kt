@@ -1,5 +1,6 @@
 package com.example.u_health
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
@@ -26,11 +27,15 @@ class SplashScreen : AppCompatActivity()
                 R.anim.anim1)
             LogoApp.startAnimation(AnimLogo)
 
+            val intent = Intent(this, Login::class.java)
+
             AnimLogo.setAnimationListener(object: Animation.AnimationListener {
 
                 override fun onAnimationStart(animation: Animation?) {
                 }
                 override fun onAnimationEnd(animation: Animation?) {
+                    startActivity(intent)
+                    finish()
                 }
                 override fun onAnimationRepeat(animation: Animation?) {
                 }

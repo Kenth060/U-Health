@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">U Health</string>
-
+    <string name="correo">Correo</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="HelperText">Requerido</string>
+    <string name="btnIniciarSesion">Iniciar Sesión</string>
+    <string name="btnRegistrarse">Registrarse</string>
 </resources>

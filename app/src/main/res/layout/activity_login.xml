@@ -6,4 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLogin"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="96dp"
+        android:src="@drawable/ic_capsula"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/FondotxtCorreo"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        app:boxStrokeColor="#00FF00"
+        app:counterEnabled="true"
+        app:counterMaxLength="14"
+        app:counterTextColor="@color/Darkseagreen"
+        app:helperTextTextColor="@color/DarkCyan"
+        app:helperText="@string/HelperText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgLogin">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtCorreo"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:autoLink="email"
+            android:drawableLeft="@drawable/ic_correo"
+            android:drawablePadding="8dp"
+            android:hint="@string/correo"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/FondotxtContraseña"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:boxStrokeColor="#00FF00"
+        app:counterEnabled="true"
+        app:counterMaxLength="14"
+        app:counterTextColor="@color/Darkseagreen"
+        app:helperText="@string/HelperText"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/DarkCyan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FondotxtCorreo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtContraseña"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:autoLink="email"
+            android:drawableLeft="@drawable/ic_lock"
+            android:drawablePadding="8dp"
+            android:hint="@string/Contraseña"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/Springgreen"
+        android:hint="@string/btnIniciarSesion"
+        android:textColorHint="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/FondotxtContraseña" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/Springgreen"
+        android:hint="@string/btnRegistrarse"
+        android:textColorHint="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
