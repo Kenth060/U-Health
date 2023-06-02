@@ -41,7 +41,10 @@ class Login : AppCompatActivity() {
             }
         }
 
-
+        binding.btnSignIn.setOnClickListener { v->
+            val intent = Intent(v.context, CrearCuenta::class.java)
+            startActivity(intent)
+        }
     }
 
     fun validarUsuario():Boolean{

@@ -5,4 +5,6 @@
     <string name="HelperText">Requerido</string>
     <string name="btnIniciarSesion">Iniciar Sesión</string>
     <string name="btnRegistrarse">Registrarse</string>
+    <string name="ConfirmarContraseña">Confirmar Contraseña</string>
+    <string name="btnCrearCuenta">Crear Cuenta\n</string>
 </resources>
