@@ -7,4 +7,7 @@
     <string name="btnRegistrarse">Registrarse</string>
     <string name="ConfirmarContraseña">Confirmar Contraseña</string>
     <string name="btnCrearCuenta">Crear Cuenta\n</string>
+    <string name="Google">Google</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Twitter">Twitter</string>
 </resources>

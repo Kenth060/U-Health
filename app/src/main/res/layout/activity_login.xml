@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,9 +12,9 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="72dp"
-        android:layout_marginEnd="96dp"
         android:src="@drawable/ic_capsula"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,6 +102,55 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <ImageButton
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="@dimen/Ancho1"
+        android:layout_height="@dimen/Ancho1"
+        android:layout_marginStart="@dimen/margen2"
+        android:layout_marginTop="@dimen/margen3"
+        android:layout_marginBottom="@dimen/margen4"
+        android:background="@drawable/button_social"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:contentDescription="@string/Google"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+        app:layout_constraintVertical_bias="0.485"
+        app:srcCompat="@drawable/ic_google" />
+
+    <ImageButton
+        android:id="@+id/btnFacebookSignIn"
+        android:layout_width="@dimen/Ancho1"
+        android:layout_height="@dimen/Ancho1"
+        android:layout_marginStart="@dimen/margen2"
+        android:layout_marginTop="@dimen/margen3"
+        android:layout_marginBottom="@dimen/margen4"
+        android:background="@drawable/button_social"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:contentDescription="@string/Facebook"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnGoogleSignIn"
+        app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+        app:srcCompat="@drawable/ic_facebook" />
+
+    <ImageButton
+        android:id="@+id/btnTwitterSignIn"
+        android:layout_width="@dimen/Ancho1"
+        android:layout_height="@dimen/Ancho1"
+        android:layout_marginStart="@dimen/margen2"
+        android:layout_marginTop="@dimen/margen3"
+        android:layout_marginBottom="@dimen/margen4"
+        android:background="@drawable/button_social"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:contentDescription="@string/Twitter"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnFacebookSignIn"
+        app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+        app:srcCompat="@drawable/ic_twitter" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
