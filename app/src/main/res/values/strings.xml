@@ -10,4 +10,11 @@
     <string name="Google">Google</string>
     <string name="Facebook">Facebook</string>
     <string name="Twitter">Twitter</string>
+
+
+    <string name="facebook_app_id">230037006451601</string>
+    <string name="fb_login_protocol_scheme">fb230037006451601</string>
+    <string name="facebook_client_token">32bb726dc58fbe052ebc8b9ba9e59ba1</string>
+
+
 </resources>

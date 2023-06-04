@@ -2,7 +2,7 @@
 <resources>
     <dimen name="Ancho1">65dp</dimen>
     <dimen name="margen1">92dp</dimen>
-    <dimen name="margen2">60dp</dimen>
+    <dimen name="margen2">50dp</dimen>
     <dimen name="margen3">30dp</dimen>
     <dimen name="margen4">54dp</dimen>
 </resources>
