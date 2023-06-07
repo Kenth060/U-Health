@@ -16,5 +16,6 @@
     <string name="fb_login_protocol_scheme">fb230037006451601</string>
     <string name="facebook_client_token">32bb726dc58fbe052ebc8b9ba9e59ba1</string>
 
+    <string name="preps_file">com.example.u_health.PREFERENCE_FILE_KEY</string>
 
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="Ancho1">65dp</dimen>
+    <dimen name="Ancho1">40dp</dimen>
     <dimen name="margen1">92dp</dimen>
     <dimen name="margen2">50dp</dimen>
     <dimen name="margen3">30dp</dimen>

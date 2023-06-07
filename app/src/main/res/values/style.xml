@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ConfirmationDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@drawable/background_dialog</item>
+        <item name="android:textColorPrimary">@color/dialog_text_primary</item>
+        <item name="android:textColorSecondary">@color/dialog_text_secondary</item>
+    </style>
+
+</resources>

@@ -5,4 +5,16 @@
     <color name="DarkCyan">#008B8B</color>
     <color name="Darkseagreen">#8FBC8B</color>
     <color name="Springgreen">#00FF7F</color>
+
+
+    <color name="Crema">#ece1c3</color>
+    <color name="LightBlue">#8ebdb6</color>
+    <color name="DarkBlue">#3e838c</color>
+    <color name="Cyan">#195e63</color>
+    <color name="DarkCyann">#063940</color>
+
+
+    <color name="dialog_text_primary">#000000</color>
+    <color name="dialog_text_secondary">#808080</color>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.example.u_health
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,17 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.u_health.databinding.ActivityLoginBinding
 import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FacebookAuthCredential
-import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -36,22 +31,32 @@ class Login : AppCompatActivity() {
         setContentView(view)
 
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
+        val currentUser = firebaseAuth.currentUser
+
+        if (currentUser!=null)
+        {
+            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(this, "Bienvenido :)",Toast.LENGTH_SHORT).show()
+            finish()
+        }
+
         binding.btnLogin.setOnClickListener {
             if (validarUsuario() == true) {
                 firebaseAuth.signInWithEmailAndPassword(
                     binding.txtCorreo.text.toString(),
                     binding.txtContraseA.text.toString()
-                ).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
+                ).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         startActivity(Intent(this, MainActivity::class.java))
-                        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
                         binding.txtCorreo.setText("")
                         binding.txtContraseA.setText("")
                     } else {
                         Toast.makeText(this, "El Usuario y Clave no existen.", Toast.LENGTH_SHORT)
-                            .show();
+                            .show()
                     }
-                })
+                }
             }
         }
 
@@ -67,21 +72,14 @@ class Login : AppCompatActivity() {
                 .build()
 
             val googleClient = GoogleSignIn.getClient(this, Googleconf)
-
             googleClient.signOut()
-
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
-
         }
-
-
-
-
     }
 
-    fun validarUsuario(): Boolean {
+    private fun validarUsuario(): Boolean {
         try {
-            var validaok: Boolean = false
+            var validaok = false
             if (binding.txtCorreo.text?.length?.equals(0)!!) {
                 binding.txtCorreo.requestFocus()
                 binding.txtCorreo.setError("Debe ingresar su correo electronico.")
@@ -89,14 +87,14 @@ class Login : AppCompatActivity() {
             }
             if (binding.txtContraseA.text?.length?.equals(0)!!) {
                 binding.txtContraseA.requestFocus()
-                binding.txtContraseA.setError("Debe ingresar una contraseña.")
+                binding.txtContraseA.error = "Debe ingresar una contraseña."
                 return validaok
             }
             validaok = true
             return validaok
         } catch (e: Exception) {
-            e.message?.let { Log.e("Error en validacion", it) };
-            return false;
+            e.message?.let { Log.e("Error en validacion", it) }
+            return false
         }
     }
 
@@ -117,14 +115,14 @@ class Login : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
 
                     FirebaseAuth.getInstance().signInWithCredential(credential)
-                        .addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
+                        .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 startActivity(Intent(this, MainActivity::class.java))
-                                Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
                                 binding.txtCorreo.setText("")
                                 binding.txtContraseA.setText("")
                             }
-                        })
+                        }
                 }
             } catch (e: ApiException) {
                 val Mensaje = AlertDialog.Builder(this)
