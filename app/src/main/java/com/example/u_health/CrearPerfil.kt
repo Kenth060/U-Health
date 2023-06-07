@@ -39,7 +39,6 @@ class CrearPerfil : AppCompatActivity()
         bindingEnfermedad = VistaEnfermedadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.btnSiguiente.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()

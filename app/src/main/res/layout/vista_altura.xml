@@ -17,6 +17,7 @@
         android:layout_marginStart="2dp"
         android:gravity="center"
         android:textColorHint="@color/white"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/numberPickerPulgadas"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +29,7 @@
         android:layout_height="44dp"
         android:gravity="center"
         android:textColorHint="@color/white"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -55,6 +57,7 @@
         android:layout_marginTop="16dp"
         android:text="Pies y Pulgadas"
         android:textColorHint="@color/white"
+        android:textColor="@color/texto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,7 +99,7 @@
         android:layout_marginTop="40dp"
         android:background="#252424"
         android:text="Cancelar"
-        android:textColor="#7A7AEA"
+        android:textColor="@color/texto"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberPickerPies" />
@@ -109,7 +112,7 @@
         android:layout_marginTop="40dp"
         android:background="#252424"
         android:text="Aceptar"
-        android:textColor="#7A7AEA"
+        android:textColor="@color/texto"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

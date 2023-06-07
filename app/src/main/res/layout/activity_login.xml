@@ -23,10 +23,10 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="40dp"
-        app:boxStrokeColor="#00FF00"
+        app:boxStrokeColor="@color/DarkCyan"
         app:counterEnabled="true"
         app:counterMaxLength="50"
-        app:counterTextColor="@color/Darkseagreen"
+        app:counterTextColor="@color/LightBlue"
         app:helperTextTextColor="@color/DarkCyan"
         app:helperText="@string/HelperText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +42,7 @@
             android:drawablePadding="8dp"
             android:hint="@string/correo"
             android:inputType="textEmailAddress"
+            android:textColorHint="@color/DarkCyan"
             android:textColor="@color/DarkCyan" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,7 +73,8 @@
             android:drawablePadding="8dp"
             android:hint="@string/Contraseña"
             android:inputType="textPassword"
-            android:textColor="@color/DarkCyan" />
+            android:textColor="@color/DarkCyan"
+            android:textColorHint= "@color/DarkCyan"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
