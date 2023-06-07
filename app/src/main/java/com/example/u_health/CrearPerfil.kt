@@ -1,6 +1,7 @@
 package com.example.u_health
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.NumberPicker
 import android.widget.PopupWindow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.diseodatos.DatePickerFragment
@@ -36,6 +38,14 @@ class CrearPerfil : AppCompatActivity()
         bindingAltura = VistaAlturaBinding.inflate(layoutInflater)
         bindingEnfermedad = VistaEnfermedadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        binding.btnSiguiente.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
+        }
+
+
         initNumberPicker()
         activityCalendarFN()
         //metodo para ventanas flotantes que contiene un solo numberPicker

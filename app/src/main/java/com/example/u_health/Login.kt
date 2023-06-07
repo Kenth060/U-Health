@@ -36,7 +36,7 @@ class Login : AppCompatActivity() {
 
         if (currentUser!=null)
         {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, CrearPerfil::class.java))
             Toast.makeText(this, "Bienvenido :)",Toast.LENGTH_SHORT).show()
             finish()
         }
@@ -48,7 +48,7 @@ class Login : AppCompatActivity() {
                     binding.txtContraseA.text.toString()
                 ).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, CrearPerfil::class.java))
                         Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
                         binding.txtCorreo.setText("")
                         binding.txtContraseA.setText("")
@@ -117,7 +117,7 @@ class Login : AppCompatActivity() {
                     FirebaseAuth.getInstance().signInWithCredential(credential)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                startActivity(Intent(this, MainActivity::class.java))
+                                startActivity(Intent(this, CrearPerfil::class.java))
                                 Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
                                 binding.txtCorreo.setText("")
                                 binding.txtContraseA.setText("")
