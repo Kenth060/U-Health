@@ -19,6 +19,8 @@ class CrearCuenta : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
 
+        //
+
         binding = ActivityCrearCuentaBinding.inflate(layoutInflater)
         val view= binding.root
         setContentView(view)
