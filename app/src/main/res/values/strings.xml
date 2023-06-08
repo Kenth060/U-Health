@@ -7,9 +7,8 @@
     <string name="btnRegistrarse">Registrarse</string>
     <string name="ConfirmarContraseña">Confirmar Contraseña</string>
     <string name="btnCrearCuenta">Crear Cuenta\n</string>
-    <string name="Google">Google</string>
-    <string name="Facebook">Facebook</string>
-    <string name="Twitter">Twitter</string>
+    <string name="Google">Iniciar Sesión con Google</string>
+
 
 
     <string name="facebook_app_id">230037006451601</string>
@@ -17,5 +16,6 @@
     <string name="facebook_client_token">32bb726dc58fbe052ebc8b9ba9e59ba1</string>
 
     <string name="preps_file">com.example.u_health.PREFERENCE_FILE_KEY</string>
+    <string name="Lema">Tu Salud en tus manos</string>
 
 </resources>

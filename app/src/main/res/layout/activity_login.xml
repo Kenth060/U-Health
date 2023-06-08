@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Crema"
+    android:background="@color/fondo"
     tools:context=".Login">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -13,56 +12,63 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="72dp"
-        android:src="@drawable/ic_capsula"
+        android:src="@drawable/ic_uhealth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/FondotxtCorreo"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="@dimen/anchoCajaTexto"
+        android:layout_height="@dimen/altoCajaTexto"
+        android:layout_marginTop="@dimen/margen5"
+        android:textColorHint="@color/DarkCyan"
         app:boxStrokeColor="@color/DarkCyan"
         app:counterEnabled="true"
         app:counterMaxLength="50"
         app:counterTextColor="@color/LightBlue"
-        app:helperTextTextColor="@color/DarkCyan"
         app:helperText="@string/HelperText"
+        app:helperTextTextColor="@color/DarkCyan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgLogin">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtCorreo"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/alto1"
             android:autoLink="email"
             android:drawableLeft="@drawable/ic_correo"
             android:drawablePadding="8dp"
             android:hint="@string/correo"
             android:inputType="textEmailAddress"
+            android:textColor="@color/DarkCyan"
+            android:textColorHighlight="@color/DarkCyan"
             android:textColorHint="@color/DarkCyan"
-            android:textColor="@color/DarkCyan" />
+            android:textColorLink="@color/DarkCyan" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/FondotxtContraseña"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/anchoCajaTexto"
+        android:layout_height="@dimen/altoCajaTexto"
         android:layout_marginTop="20dp"
+        android:textColorHint="@color/DarkCyan"
         app:boxStrokeColor="@color/DarkCyan"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:counterTextColor="@color/LightBlue"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/DarkCyann"
         app:helperText="@string/HelperText"
         app:helperTextEnabled="true"
         app:helperTextTextColor="@color/DarkCyan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FondotxtCorreo"
-        app:endIconMode="password_toggle">
+        app:layout_constraintTop_toBottomOf="@+id/FondotxtCorreo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtContraseña"
@@ -74,7 +80,9 @@
             android:hint="@string/Contraseña"
             android:inputType="textPassword"
             android:textColor="@color/DarkCyan"
-            android:textColorHint= "@color/DarkCyan"/>
+            android:textColorHighlight="@color/DarkCyan"
+            android:textColorHint="@color/DarkCyan"
+            android:textColorLink="@color/DarkCyan" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +91,7 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
-        android:backgroundTint="@color/DarkBlue"
+        android:backgroundTint="@color/Blue"
         android:hint="@string/btnIniciarSesion"
         android:textColorHint="@color/black"
         android:textSize="16sp"
@@ -97,7 +105,7 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/DarkBlue"
+        android:backgroundTint="@color/Blue"
         android:hint="@string/btnRegistrarse"
         android:textColorHint="@color/black"
         android:textSize="16sp"
@@ -108,19 +116,30 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGoogleSignIn"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/DarkBlue"
+        android:backgroundTint="@color/fondo"
+        android:drawableLeft="@drawable/google_ic"
         android:hint="@string/Google"
         android:textColorHint="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignIn"
-        android:drawableLeft="@drawable/ic_correo"/>
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
+    <TextView
+        android:id="@+id/txtImgLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/courgette"
+        android:text="@string/Lema"
+        android:textColor="@color/DarkCyan"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

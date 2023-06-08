@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Crema"
+    android:background="@color/fondo"
     tools:context=".CrearPerfil">
 
 
@@ -13,75 +12,74 @@
         android:id="@+id/TextViewActividadGenero"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/background_textview"
         android:drawableEnd="@drawable/posicion_drawable_arrow"
         android:gravity="center"
         android:hint="Genero"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/TextViewActividadPeso"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <TextView
         android:id="@+id/TextViewActividadPeso"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="328dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/background_textview"
         android:drawableEnd="@drawable/arrow2"
         android:gravity="center"
         android:hint="Peso"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/TextViewActividadGenero" />
 
     <TextView
         android:id="@+id/TextViewActividadAltura"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/background_textview"
         android:drawableEnd="@drawable/arrow2"
         android:gravity="center"
         android:hint="Altura"
         android:textColorHint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewActividadGenero" />
+        app:layout_constraintTop_toBottomOf="@+id/TextViewActividadFechaNac" />
 
     <TextView
         android:id="@+id/TextViewActividadFechaNac"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/background_textview"
         android:drawableEnd="@drawable/calendar"
         android:gravity="center"
         android:hint="Fecha Nacimiento"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toEndOf="@+id/TextViewActividadAltura"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewActividadPeso" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="167dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
-        android:hint="nombre"
+        android:layout_width="349dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="100dp"
+        android:hint="Nombre"
         app:boxBackgroundMode="outline"
         app:counterEnabled="true"
         app:counterMaxLength="21"
         app:helperText="Requerido"
-        app:hintTextColor="@color/white"
+        app:hintTextColor="@color/DarkBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewActividadAltura">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -94,25 +92,22 @@
         android:id="@+id/TextViewActividadEnfermedad"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="180dp"
         android:background="@drawable/background_textview"
         android:drawableEnd="@drawable/posicion_drawable_arrow"
         android:gravity="center"
         android:hint="Enfermedad"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewActividadFechaNac" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
         android:id="@+id/btnSiguiente"
-        android:backgroundTint="@color/DarkBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="28dp"
+        android:backgroundTint="@color/DarkBlue"
         android:text="Siguiente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

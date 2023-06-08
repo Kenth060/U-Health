@@ -17,5 +17,14 @@
     <color name="dialog_text_primary">#000000</color>
     <color name="dialog_text_secondary">#808080</color>
 
+    <color name="VeryLightPurple">#f2e4f9</color>
+    <color name="Gray">#686466</color>
+    <color name="Blue">#839cb5</color>
+    <color name="Celeste">#96d7eb</color>
+    <color name="CelesteClaro">#b1e1e9</color>
+
+    <color name="fondo">#FFFFFFFF</color>
+
+
 
 </resources>
