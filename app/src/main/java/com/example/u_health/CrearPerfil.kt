@@ -20,6 +20,7 @@ import com.example.u_health.databinding.VistaAlturaBinding
 import com.example.u_health.databinding.VistaEnfermedadBinding
 import com.example.u_health.databinding.VistaGeneroBinding
 import com.example.u_health.databinding.VistaPesoBinding
+import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
 
 class CrearPerfil : AppCompatActivity()
@@ -38,6 +39,17 @@ class CrearPerfil : AppCompatActivity()
         bindingAltura = VistaAlturaBinding.inflate(layoutInflater)
         bindingEnfermedad = VistaEnfermedadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        
+
+
+
+
+
+
+
+
+
 
         binding.btnSiguiente.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
