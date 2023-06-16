@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="Ancho1">40dp</dimen>
+    <dimen name="margen">35dp</dimen>
     <dimen name="margen1">92dp</dimen>
     <dimen name="margen2">50dp</dimen>
     <dimen name="margen3">30dp</dimen>
@@ -8,5 +9,6 @@
     <dimen name="anchoCajaTexto">300dp</dimen>
     <dimen name="altoCajaTexto">80dp</dimen>
     <dimen name="margen5">40dp</dimen>
+    <dimen name="margen6">20dp</dimen>
     <dimen name="alto1">55dp</dimen>
 </resources>

@@ -21,6 +21,7 @@ import com.example.u_health.databinding.VistaEnfermedadBinding
 import com.example.u_health.databinding.VistaGeneroBinding
 import com.example.u_health.databinding.VistaPesoBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 
 class CrearPerfil : AppCompatActivity()
@@ -40,7 +41,7 @@ class CrearPerfil : AppCompatActivity()
         bindingEnfermedad = VistaEnfermedadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        
+        val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
 
 
 

@@ -9,9 +9,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_u_health"
+        android:icon="@mipmap/ic_uhealth"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_u_health_round"
+        android:roundIcon="@mipmap/ic_uhealth_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UHealth"
         tools:targetApi="33">

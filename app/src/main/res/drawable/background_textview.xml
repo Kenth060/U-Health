@@ -4,7 +4,7 @@
     <!-- Diseño de los TextView del constraint principal -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/DarkBlue" />
+            <solid android:color="@color/Blue" />
             <corners android:radius="8dp" />
             <!--stroke = diseño del borde-->
             <stroke

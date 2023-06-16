@@ -1,6 +1,6 @@
 package com.example.u_health
 
-import android.content.Context
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,8 +12,7 @@ import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -42,7 +41,7 @@ class Login : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            if (validarUsuario() == true) {
+            if (validarUsuario()) {
                 firebaseAuth.signInWithEmailAndPassword(
                     binding.txtCorreo.text.toString(),
                     binding.txtContraseA.text.toString()
@@ -82,7 +81,7 @@ class Login : AppCompatActivity() {
             var validaok = false
             if (binding.txtCorreo.text?.length?.equals(0)!!) {
                 binding.txtCorreo.requestFocus()
-                binding.txtCorreo.setError("Debe ingresar su correo electronico.")
+                binding.txtCorreo.error = "Debe ingresar su correo electronico."
                 return validaok
             }
             if (binding.txtContraseA.text?.length?.equals(0)!!) {

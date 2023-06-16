@@ -12,7 +12,7 @@
     <color name="DarkBlue">#3e838c</color>
     <color name="Cyan">#195e63</color>
     <color name="DarkCyann">#063940</color>
-    <color name="texto">#8ebdb6</color>
+    <color name="texto">#027e82</color>
 
     <color name="dialog_text_primary">#000000</color>
     <color name="dialog_text_secondary">#808080</color>
@@ -23,7 +23,9 @@
     <color name="Celeste">#96d7eb</color>
     <color name="CelesteClaro">#b1e1e9</color>
 
-    <color name="fondo">#FFFFFFFF</color>
+    <color name="fondo">#F0FDFC</color>
+    <color name="Logo">#029196</color>
+    <color name="textologin">#272E36</color>
 
 
 

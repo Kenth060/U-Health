@@ -17,5 +17,14 @@
 
     <string name="preps_file">com.example.u_health.PREFERENCE_FILE_KEY</string>
     <string name="Lema">Tu Salud en tus manos</string>
+    <string name="ContentDescription">Logo App</string>
+    <string name="nombres">Nombres</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="fecha_nacimiento">Fecha Nacimiento</string>
+    <string name="genero">Genero</string>
+    <string name="altura">Altura</string>
+    <string name="peso">Peso</string>
+    <string name="enfermedad">Enfermedad</string>
+    <string name="guardar">Guardar Perfil</string>
 
 </resources>
