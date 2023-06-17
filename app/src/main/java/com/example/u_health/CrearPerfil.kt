@@ -32,7 +32,8 @@ class CrearPerfil : AppCompatActivity()
     private lateinit var bindingPeso : VistaPesoBinding
     private lateinit var bindingAltura : VistaAlturaBinding
     private lateinit var bindingEnfermedad : VistaEnfermedadBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearPerfilBinding.inflate(layoutInflater)
         bindingGenero = VistaGeneroBinding.inflate(layoutInflater)
@@ -42,14 +43,6 @@ class CrearPerfil : AppCompatActivity()
         setContentView(binding.root)
 
         val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
-
-
-
-
-
-
-
-
 
 
         binding.btnSiguiente.setOnClickListener {
@@ -98,15 +91,16 @@ class CrearPerfil : AppCompatActivity()
         actividadCancelar()
         //updateTextView()
     }
-    private fun initNumberPicker() {
-        //genero
+    private fun initNumberPicker()
+    {
+        //Genero
         bindingGenero.numberPicker.minValue = 0
         bindingGenero.numberPicker.maxValue = 3
         bindingGenero.numberPicker.displayedValues = arrayOf(
             "Masculino","Femenino","Prefiero no decir","Otro"
         )
         //peso
-        bindingPeso.numberPicker1.minValue = 80
+        bindingPeso.numberPicker1.minValue = 0
         bindingPeso.numberPicker1.maxValue = 300
         bindingPeso.numberPicker2.minValue = 0
         bindingPeso.numberPicker2.maxValue = 9

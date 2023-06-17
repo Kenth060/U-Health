@@ -6,48 +6,59 @@
     android:id="@+id/enfermedadVista"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#252424"
+    android:background="@drawable/borde"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Enfermedad"
-        android:textColorHint="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/iconAtrasEnfermedad"
-        android:layout_width="62dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="132dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/arrow2"
+        android:background="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/abel"
+        android:text="@string/tipo_enfermedad"
+        android:textColorHint="@color/textologin"
+        android:textAlignment="center"
+        android:textColor="@color/textologin"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/iconAtrasEnfermedad"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <NumberPicker
         android:id="@+id/numberPickerEnfermedad"
         android:layout_width="104dp"
         android:layout_height="168dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textViewSelectEnfermedad"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="128dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/abel"
         android:gravity="center"
-        android:text="Enfermedad"
-        android:textColorHint="@color/white"
+        android:textAlignment="center"
+        android:textColor="@color/textologin"
+        android:textColorHint="@color/textologin"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/numberPickerEnfermedad"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,12 +66,15 @@
         android:id="@+id/btnCancelarEnfermedad"
         android:layout_width="95dp"
         android:layout_height="37dp"
-        android:layout_marginStart="135dp"
-        android:layout_marginTop="34dp"
-        android:background="#252424"
-        android:textSize="10sp"
-        android:text="Cancelar"
-        android:textColor="#7A7AEA"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/Blue"
+        android:fontFamily="@font/abel"
+        android:text="@string/cancelar"
+        android:textAlignment="center"
+        android:textColor="@color/textologin"
+        android:textSize="11sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberPickerEnfermedad" />
 
@@ -68,12 +82,15 @@
         android:id="@+id/btnAceptarEnfermedad"
         android:layout_width="95dp"
         android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="34dp"
-        android:background="#252424"
-        android:textSize="10sp"
-        android:text="Aceptar"
-        android:textColor="#7A7AEA"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/Blue"
+        android:fontFamily="@font/abel"
+        android:text="@string/aceptar"
+        android:textAlignment="center"
+        android:textColor="@color/textologin"
+        android:textSize="11sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/btnCancelarEnfermedad"
         app:layout_constraintTop_toBottomOf="@+id/numberPickerEnfermedad" />
 

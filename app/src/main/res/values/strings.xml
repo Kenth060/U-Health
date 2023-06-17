@@ -26,5 +26,8 @@
     <string name="peso">Peso</string>
     <string name="enfermedad">Enfermedad</string>
     <string name="guardar">Guardar Perfil</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="tipo_enfermedad">Tipo de Enfermedad</string>
 
 </resources>
