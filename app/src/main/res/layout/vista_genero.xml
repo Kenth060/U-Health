@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="130dp"
+        android:text="Masculino"
         android:fontFamily="@font/abel"
         android:gravity="center"
         android:textAlignment="center"

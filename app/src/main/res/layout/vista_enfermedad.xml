@@ -54,6 +54,7 @@
         android:layout_marginTop="140dp"
         android:fontFamily="@font/abel"
         android:gravity="center"
+        android:hint="Diabetes"
         android:textAlignment="center"
         android:textColor="@color/textologin"
         android:textColorHint="@color/textologin"

@@ -1,6 +1,7 @@
 package com.example.u_health
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +21,6 @@ import com.example.u_health.databinding.VistaAlturaBinding
 import com.example.u_health.databinding.VistaEnfermedadBinding
 import com.example.u_health.databinding.VistaGeneroBinding
 import com.example.u_health.databinding.VistaPesoBinding
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 
@@ -81,8 +81,8 @@ class CrearPerfil : AppCompatActivity()
         )
         actividadTwoNumberPicker(
             { showWindowFloat(0.89,bindingAltura.root) },
-            bindingAltura.numberPickerPies,
-            bindingAltura.numberPickerPulgadas,
+            bindingAltura.numberPickerMetros,
+            bindingAltura.numberPickerCentimetros,
             bindingAltura.textviewPies,
             bindingAltura.textviewPulgadas,
             binding.TextViewActividadAltura,
@@ -106,13 +106,13 @@ class CrearPerfil : AppCompatActivity()
         bindingPeso.numberPicker2.maxValue = 9
 
         //altura
-        bindingAltura.numberPickerPies.minValue = 0
-        bindingAltura.numberPickerPies.maxValue = 9
-        bindingAltura.numberPickerPulgadas.minValue = 0
-        bindingAltura.numberPickerPulgadas.maxValue = 9
+        bindingAltura.numberPickerMetros.minValue = 0
+        bindingAltura.numberPickerMetros.maxValue = 3
+        bindingAltura.numberPickerCentimetros.minValue = 30
+        bindingAltura.numberPickerCentimetros.maxValue = 99
 
-        bindingAltura.numberPickerPies.displayedValues = Array(10) { "$it ft" }
-        bindingAltura.numberPickerPulgadas.displayedValues = Array(10) { "$it in" }
+        bindingAltura.numberPickerMetros.displayedValues = Array(4) { "$it m" }
+        bindingAltura.numberPickerCentimetros.displayedValues = Array(70) { "${it + 30} cm" }
 
         //enfermedad
         bindingEnfermedad.numberPickerEnfermedad.minValue = 0
@@ -254,8 +254,8 @@ class CrearPerfil : AppCompatActivity()
     private fun activityAccept() {
         //diseño de genero
         bindingGenero.btnAceptar.setOnClickListener {
-            confirmationDialogAccept(bindingGenero.textViewSelect,bindingGenero.numberPicker,
-                bindingGenero.generoVista, binding.TextViewActividadGenero)
+            confirmationDialogAcceptGenero(bindingGenero.textViewSelect,bindingGenero.numberPicker,
+               binding.TextViewActividadGenero)
         }
         //diseño de peso
         bindingPeso.btnAceptarpeso.setOnClickListener {
@@ -266,13 +266,37 @@ class CrearPerfil : AppCompatActivity()
             confirmacionDialogAceptarAltura()
         }
         bindingEnfermedad.btnAceptarEnfermedad.setOnClickListener {
-            confirmationDialogAccept(bindingEnfermedad.textViewSelectEnfermedad,bindingEnfermedad.numberPickerEnfermedad,
-                bindingEnfermedad.enfermedadVista, binding.TextViewActividadEnfermedad)
+            confirmationDialogAcceptEnfermedad(bindingEnfermedad.textViewSelectEnfermedad,bindingEnfermedad.numberPickerEnfermedad,
+                  binding.TextViewActividadEnfermedad)
         }
 
     }
-    private fun confirmationDialogAccept(textViewSelect : TextView, numberPicker : NumberPicker,
-                                         vista : ConstraintLayout, TextViewActividad : TextView
+
+    private fun confirmationDialogAcceptEnfermedad(textViewSelectEnfermedad: TextView,
+                                                   numberPickerEnfermedad: NumberPicker,
+                                                   textViewActividadEnfermedad: TextView) {
+
+        val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
+        dialogBuilder.setTitle("Confirmar")
+            .setMessage("¿Desea confirmar el tipo de enfermedad ${textViewSelectEnfermedad.text}?")
+            .setPositiveButton("Sí") { dialog, _ ->
+                dialog.dismiss()
+                val selectedValue = numberPickerEnfermedad.value
+                val selectedText = numberPickerEnfermedad.displayedValues[selectedValue]
+                textViewActividadEnfermedad.hint = selectedText
+                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("enfermedad", selectedText)
+                editor.apply()
+                popupWindow.dismiss()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }.create().show()
+    }
+
+    private fun confirmationDialogAcceptGenero(textViewSelect : TextView, numberPicker : NumberPicker,
+                                          TextViewActividad : TextView
     ) {
         val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
         dialogBuilder.setTitle("Confirmar")
@@ -280,8 +304,12 @@ class CrearPerfil : AppCompatActivity()
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 val selectedValue = numberPicker.value
-                TextViewActividad.hint = numberPicker.displayedValues[selectedValue]
-                //vista.visibility = View.GONE
+                val selectedText = numberPicker.displayedValues[selectedValue]
+                TextViewActividad.hint = selectedText
+                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("genero", selectedText)
+                editor.apply()
                 popupWindow.dismiss()
             }
             .setNegativeButton("No") { dialog, _ ->
@@ -289,43 +317,56 @@ class CrearPerfil : AppCompatActivity()
             }.create().show()
     }
     private fun confirmationDialogAcceptWeight() {
-        if(bindingPeso.textview2.text.equals("Peso") && bindingPeso.textview3.text.equals("Peso")){
-            dialog(bindingPeso.numberPicker1,bindingPeso.numberPicker2,binding.TextViewActividadPeso,
-                bindingPeso.pesoVista)
+        if(bindingPeso.textview2.text.equals("0") && bindingPeso.textview3.text.equals("0")){
+           // dialogPeso(bindingPeso.numberPicker1,bindingPeso.numberPicker2,binding.TextViewActividadPeso,
+               // bindingPeso.pesoVista)
+            Toast.makeText(this, "ingrese una medida", Toast.LENGTH_SHORT).show()
         }else{
-            dialog(bindingPeso.numberPicker1,bindingPeso.numberPicker2,binding.TextViewActividadPeso,
-                bindingPeso.pesoVista)
+            dialogPeso(bindingPeso.numberPicker1,bindingPeso.numberPicker2,binding.TextViewActividadPeso)
         }
 
     }
-    private fun dialog(numberPicker1: NumberPicker, numberPicker2: NumberPicker,
-                       TextViewActividad: TextView, vista: ConstraintLayout
+    private fun dialogPeso(numberPicker1: NumberPicker, numberPicker2: NumberPicker,
+                       TextViewActividad: TextView
     ) {
         val selectedValue1 = numberPicker1.value
         val selectedValue2 = numberPicker2.value
         val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
         dialogBuilder.setTitle("Confirmar")
-            .setMessage("¿Desea confirmar su medida ${selectedValue1}.${selectedValue2}?")
+            .setMessage("¿Desea confirmar su peso ${selectedValue1}.${selectedValue2}?")
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 TextViewActividad.hint = "$selectedValue1.$selectedValue2"
-                //vista.visibility = View.GONE
+                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("peso", TextViewActividad.hint.toString())
+                editor.apply()
                 popupWindow.dismiss()
             }.setNegativeButton("No") { dialog, _ -> dialog.dismiss() }.create().show()
     }
     private fun confirmacionDialogAceptarAltura() {
-        if((bindingAltura.textviewPies.text.isEmpty() || bindingAltura.textviewPulgadas.text.isEmpty())||
-            bindingAltura.textviewPies.text.equals("0") && bindingAltura.textviewPulgadas.text.equals("0")){
-            val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
-            dialogBuilder.setTitle("Recomendacion")
-                .setMessage("Seleccione una medida de altura")
-                .setPositiveButton("Aceptar") { dialog, _ -> dialog.dismiss() }.create().show()
-        }else{
-            dialog(bindingAltura.numberPickerPies,bindingAltura.numberPickerPulgadas,
-                binding.TextViewActividadAltura,bindingAltura.alturaVista)
-        }
-
+        dialogAltura(bindingAltura.numberPickerMetros,bindingAltura.numberPickerCentimetros,
+            binding.TextViewActividadAltura,bindingAltura.alturaVista)
     }
+
+    private fun dialogAltura(numberPickerPies: NumberPicker, numberPickerPulgadas: NumberPicker,
+                             textViewActividadAltura: TextView, alturaVista: ConstraintLayout) {
+        val selectedValue1 = numberPickerPies.value
+        val selectedValue2 = numberPickerPulgadas.value
+        val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
+        dialogBuilder.setTitle("Confirmar")
+            .setMessage("¿Desea confirmar su medida ${selectedValue1}.${selectedValue2} m?")
+            .setPositiveButton("Sí") { dialog, _ ->
+                dialog.dismiss()
+                textViewActividadAltura.hint = "$selectedValue1.$selectedValue2"
+                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("altura", textViewActividadAltura.hint.toString())
+                editor.apply()
+                popupWindow.dismiss()
+            }.setNegativeButton("No") { dialog, _ -> dialog.dismiss() }.create().show()
+    }
+
     private fun updateTextView(numberPicker : NumberPicker, textViewSelect : TextView) {
         val selectedValue = numberPicker.value
         textViewSelect.text = numberPicker.displayedValues[selectedValue]
@@ -342,6 +383,10 @@ class CrearPerfil : AppCompatActivity()
         var edad = yearActual - yearNac
 
         if (monthActual < mes || (monthActual == mes && dayActual < dia)) edad--
-        binding.TextViewActividadFechaNac.text = "$edad"
+        binding.TextViewActividadFechaNac.hint = "$edad"
+        val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("edad", binding.TextViewActividadFechaNac.hint.toString())
+        editor.apply()
     }
 }
