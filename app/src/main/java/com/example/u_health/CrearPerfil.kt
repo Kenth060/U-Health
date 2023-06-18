@@ -46,8 +46,7 @@ class CrearPerfil : AppCompatActivity()
 
 
         binding.btnSiguiente.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
+            entrada_de_datos()
         }
 
 
@@ -388,5 +387,24 @@ class CrearPerfil : AppCompatActivity()
         val editor = sharedPref.edit()
         editor.putString("edad", binding.TextViewActividadFechaNac.hint.toString())
         editor.apply()
+
+    }
+    private fun entrada_de_datos() {
+        val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
+
+        var genero = sharedPref.getString("genero", "")
+        var enfermedad = sharedPref.getString("enfermedad", "")
+        var peso = sharedPref.getString("peso", "")
+        var altura = sharedPref.getString("altura", "")
+        var edad = sharedPref.getString("edad", "")
+
+        //limpiando los datos que tenga almacenado sharedPreference
+        val editor = sharedPref.edit()
+        editor.clear()
+        editor.apply()
+
+        //siguiente pantalla
+        startActivity(Intent(this, MainActivity::class.java))
+        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
     }
 }
