@@ -3,6 +3,7 @@ package com.example.u_health
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -32,6 +33,8 @@ class CrearPerfil : AppCompatActivity()
     private lateinit var bindingPeso : VistaPesoBinding
     private lateinit var bindingAltura : VistaAlturaBinding
     private lateinit var bindingEnfermedad : VistaEnfermedadBinding
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,9 @@ class CrearPerfil : AppCompatActivity()
 
         val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-
+        //Inicializando el sharedPreferences de forma global
+        sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
+        editor = sharedPref.edit()
         binding.btnSiguiente.setOnClickListener {
             entrada_de_datos()
         }
@@ -283,8 +288,6 @@ class CrearPerfil : AppCompatActivity()
                 val selectedValue = numberPickerEnfermedad.value
                 val selectedText = numberPickerEnfermedad.displayedValues[selectedValue]
                 textViewActividadEnfermedad.hint = selectedText
-                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
-                val editor = sharedPref.edit()
                 editor.putString("enfermedad", selectedText)
                 editor.apply()
                 popupWindow.dismiss()
@@ -305,8 +308,6 @@ class CrearPerfil : AppCompatActivity()
                 val selectedValue = numberPicker.value
                 val selectedText = numberPicker.displayedValues[selectedValue]
                 TextViewActividad.hint = selectedText
-                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
-                val editor = sharedPref.edit()
                 editor.putString("genero", selectedText)
                 editor.apply()
                 popupWindow.dismiss()
@@ -336,8 +337,6 @@ class CrearPerfil : AppCompatActivity()
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 TextViewActividad.hint = "$selectedValue1.$selectedValue2"
-                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
-                val editor = sharedPref.edit()
                 editor.putString("peso", TextViewActividad.hint.toString())
                 editor.apply()
                 popupWindow.dismiss()
@@ -358,8 +357,6 @@ class CrearPerfil : AppCompatActivity()
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 textViewActividadAltura.hint = "$selectedValue1.$selectedValue2"
-                val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
-                val editor = sharedPref.edit()
                 editor.putString("altura", textViewActividadAltura.hint.toString())
                 editor.apply()
                 popupWindow.dismiss()
@@ -383,14 +380,12 @@ class CrearPerfil : AppCompatActivity()
 
         if (monthActual < mes || (monthActual == mes && dayActual < dia)) edad--
         binding.TextViewActividadFechaNac.hint = "$edad"
-        val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putString("edad", binding.TextViewActividadFechaNac.hint.toString())
         editor.apply()
 
     }
     private fun entrada_de_datos() {
-        val sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
 
         var genero = sharedPref.getString("genero", "")
         var enfermedad = sharedPref.getString("enfermedad", "")
@@ -398,8 +393,8 @@ class CrearPerfil : AppCompatActivity()
         var altura = sharedPref.getString("altura", "")
         var edad = sharedPref.getString("edad", "")
 
+
         //limpiando los datos que tenga almacenado sharedPreference
-        val editor = sharedPref.edit()
         editor.clear()
         editor.apply()
 
