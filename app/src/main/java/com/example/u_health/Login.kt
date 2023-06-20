@@ -15,6 +15,8 @@ import com.google.android.gms.common.api.ApiException
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Login : AppCompatActivity() {
 
@@ -30,32 +32,38 @@ class Login : AppCompatActivity() {
         setContentView(view)
 
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-
         val currentUser = firebaseAuth.currentUser
 
-        if (currentUser!=null)
+        if (currentUser != null)
         {
-            startActivity(Intent(this, CrearPerfil::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             Toast.makeText(this, "Bienvenido :)",Toast.LENGTH_SHORT).show()
             finish()
         }
 
         binding.btnLogin.setOnClickListener {
-            if (validarUsuario()) {
+            if (validarUsuario())
+            {
                 firebaseAuth.signInWithEmailAndPassword(
                     binding.txtCorreo.text.toString(),
                     binding.txtContraseA.text.toString()
                 ).addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        startActivity(Intent(this, CrearPerfil::class.java))
-                        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
-                        binding.txtCorreo.setText("")
-                        binding.txtContraseA.setText("")
-                    } else {
-                        Toast.makeText(this, "El Usuario y Clave no existen.", Toast.LENGTH_SHORT)
-                            .show()
+                    if (task.isSuccessful)
+                    {
+                        val id=firebaseAuth.currentUser?.uid
+
+                        if (id != null)
+                        {
+                            validar_perfil(id)
+                            binding.txtCorreo.setText("")
+                            binding.txtContraseA.setText("")
+                        }
+
                     }
+                    else
+                    { Toast.makeText(this, "El Usuario y Clave no existen.", Toast.LENGTH_SHORT).show() }
                 }
+
             }
         }
 
@@ -76,12 +84,15 @@ class Login : AppCompatActivity() {
         }
     }
 
-    private fun validarUsuario(): Boolean {
+    private fun validarUsuario(): Boolean
+    {
         try {
             var validaok = false
-            if (binding.txtCorreo.text?.length?.equals(0)!!) {
+
+            if (binding.txtCorreo.text?.length?.equals(0)!!)
+            {
                 binding.txtCorreo.requestFocus()
-                binding.txtCorreo.error = "Debe ingresar su correo electronico."
+                binding.txtCorreo.error = "Debe ingresar su correo electronico"
                 return validaok
             }
             if (binding.txtContraseA.text?.length?.equals(0)!!) {
@@ -117,7 +128,7 @@ class Login : AppCompatActivity() {
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 startActivity(Intent(this, CrearPerfil::class.java))
-                                Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Cree un perfil :D", Toast.LENGTH_SHORT).show()
                                 binding.txtCorreo.setText("")
                                 binding.txtContraseA.setText("")
                             }
@@ -134,5 +145,27 @@ class Login : AppCompatActivity() {
         }
     }
 
+    fun validar_perfil(Id:String)
+    {
+        val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        val auth : FirebaseAuth= FirebaseAuth.getInstance()
+
+
+        fireDB.collection("Usuarios").whereEqualTo(FieldPath.documentId(), Id).get()
+            .addOnSuccessListener{
+                if(!it.isEmpty)
+                {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    Toast.makeText(this, "Bienvenido Nuevamente:D", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                else
+                {
+                    startActivity(Intent(this, CrearPerfil::class.java))
+                    Toast.makeText(this, "Cree un perfil :)", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
 
 }

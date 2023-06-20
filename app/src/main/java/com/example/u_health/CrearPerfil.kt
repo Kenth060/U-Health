@@ -1,11 +1,13 @@
 package com.example.u_health
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
@@ -22,6 +24,8 @@ import com.example.u_health.databinding.VistaAlturaBinding
 import com.example.u_health.databinding.VistaEnfermedadBinding
 import com.example.u_health.databinding.VistaGeneroBinding
 import com.example.u_health.databinding.VistaPesoBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 
@@ -44,14 +48,30 @@ class CrearPerfil : AppCompatActivity()
         bindingAltura = VistaAlturaBinding.inflate(layoutInflater)
         bindingEnfermedad = VistaEnfermedadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+/*
 
-        val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
+            val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+            val auth : FirebaseAuth= FirebaseAuth.getInstance()
+
+
+            fireDB.collection("Usuarios").whereEqualTo(FieldPath.documentId(), auth.currentUser?.uid).get()
+                .addOnSuccessListener{
+                    if(!it.isEmpty)
+                    {
+                        startActivity(Intent(this, MainActivity::class.java))
+                        Toast.makeText(this, "Bienvenido Nuevamente:D", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+*/
+
 
         //Inicializando el sharedPreferences de forma global
         sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
         editor = sharedPref.edit()
-        binding.btnSiguiente.setOnClickListener {
-            entrada_de_datos()
+        binding.btnCrearPerfil.setOnClickListener {
+            Agregar_Usuario()
         }
 
 
@@ -282,7 +302,7 @@ class CrearPerfil : AppCompatActivity()
 
         val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
         dialogBuilder.setTitle("Confirmar")
-            .setMessage("¿Desea confirmar el tipo de enfermedad ${textViewSelectEnfermedad.text}?")
+            .setMessage("¿Desea confirmar su tipo de enfermedad, ${textViewSelectEnfermedad.text}?")
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 val selectedValue = numberPickerEnfermedad.value
@@ -302,7 +322,7 @@ class CrearPerfil : AppCompatActivity()
     ) {
         val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
         dialogBuilder.setTitle("Confirmar")
-            .setMessage("¿Desea confirmar su genero ${textViewSelect.text}?")
+            .setMessage("¿Desea confirmar su genero, ${textViewSelect.text}?")
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 val selectedValue = numberPicker.value
@@ -333,7 +353,7 @@ class CrearPerfil : AppCompatActivity()
         val selectedValue2 = numberPicker2.value
         val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
         dialogBuilder.setTitle("Confirmar")
-            .setMessage("¿Desea confirmar su peso ${selectedValue1}.${selectedValue2}?")
+            .setMessage("¿Desea confirmar su peso, ${selectedValue1}.${selectedValue2} lbs?")
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 TextViewActividad.hint = "$selectedValue1.$selectedValue2"
@@ -353,7 +373,7 @@ class CrearPerfil : AppCompatActivity()
         val selectedValue2 = numberPickerPulgadas.value
         val dialogBuilder = AlertDialog.Builder(this, R.style.ConfirmationDialog)
         dialogBuilder.setTitle("Confirmar")
-            .setMessage("¿Desea confirmar su medida ${selectedValue1}.${selectedValue2} m?")
+            .setMessage("¿Desea confirmar su Altura ${selectedValue1}.${selectedValue2} metros?")
             .setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 textViewActividadAltura.hint = "$selectedValue1.$selectedValue2"
@@ -385,21 +405,47 @@ class CrearPerfil : AppCompatActivity()
         editor.apply()
 
     }
-    private fun entrada_de_datos() {
+    private fun Agregar_Usuario() {
 
-        var genero = sharedPref.getString("genero", "")
-        var enfermedad = sharedPref.getString("enfermedad", "")
-        var peso = sharedPref.getString("peso", "")
-        var altura = sharedPref.getString("altura", "")
-        var edad = sharedPref.getString("edad", "")
+        val genero = sharedPref.getString("genero", "")
+        val enfermedad = sharedPref.getString("enfermedad", "")
+        val peso = sharedPref.getString("peso", "")
+        val altura = sharedPref.getString("altura", "")
+        val edad = sharedPref.getString("edad", "")
+        val Nombre = binding.txtNombrePerfil.text.toString()
+        val Apellidos = binding.txtApellidoPerfil.text.toString()
+
+        val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
+        val UsuarioActual = firebaseAuth.currentUser
+
+        val Id= UsuarioActual?.uid
+
+        if (Id != null)
+        {
+            val usuario = hashMapOf("ID" to Id,"Nombres" to Nombre , "Apellidos" to Apellidos ,
+                                    "Edad" to edad, "Genero" to genero, "Altura" to altura,
+                                    "Peso" to peso, "Enfermedad" to enfermedad)
+
+            fireDB.collection("Usuarios").document(Id)
+                .set(usuario)
+                .addOnSuccessListener { Toast.makeText(this, "Perfil Creado Correctamente", Toast.LENGTH_SHORT).show()}
+                .addOnFailureListener { Toast.makeText(this, "No se pudo crear el perfil", Toast.LENGTH_SHORT).show() }
+
+        }
+        else
+        {Toast.makeText(this, "No se pudo crear el perfil", Toast.LENGTH_SHORT).show() }
 
 
-        //limpiando los datos que tenga almacenado sharedPreference
+    //limpiando los datos que tenga almacenado sharedPreference
         editor.clear()
         editor.apply()
 
         //siguiente pantalla
         startActivity(Intent(this, MainActivity::class.java))
-        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
+
+
     }
 }
