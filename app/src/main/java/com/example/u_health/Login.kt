@@ -36,7 +36,7 @@ class Login : AppCompatActivity() {
 
         if (currentUser != null)
         {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, Menu::class.java))
             Toast.makeText(this, "Bienvenido :)",Toast.LENGTH_SHORT).show()
             finish()
         }
