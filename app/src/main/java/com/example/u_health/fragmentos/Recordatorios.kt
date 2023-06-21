@@ -1,14 +1,10 @@
-package com.example.u_health.ui.fragmentos
+package com.example.u_health.fragmentos
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.SearchView
-import androidx.navigation.fragment.NavHostFragment
 import com.example.u_health.R
 import com.example.u_health.databinding.FragmentRecordatoriosBinding
 

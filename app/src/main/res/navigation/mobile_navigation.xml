@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_recordatorios"
-        android:name="com.example.u_health.ui.fragmentos.Recordatorios"
+        android:name="com.example.u_health.fragmentos.Recordatorios"
         android:label="@string/title_recordatorios"
         tools:layout="@layout/fragment_recordatorios" />
 
     <fragment
         android:id="@+id/navigation_informacion"
-        android:name="com.example.u_health.ui.fragmentos.Informacion"
+        android:name="com.example.u_health.fragmentos.Informacion"
         android:label="@string/title_informacion"
         tools:layout="@layout/fragment_informacion" />
 
     <fragment
         android:id="@+id/navigation_mapa"
-        android:name="com.example.u_health.ui.fragmentos.Mapa"
+        android:name="com.example.u_health.fragmentos.Mapa"
         android:label="@string/title_mapa"
         tools:layout="@layout/fragment_mapa" />
 </navigation>

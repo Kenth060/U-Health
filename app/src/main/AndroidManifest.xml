@@ -15,10 +15,10 @@
         android:theme="@style/Theme.UHealth"
         tools:targetApi="33">
         <activity
-            android:name=".ui.fragmentos.FrequencyData"
+            android:name=".fragmentos.FrequencyData"
             android:exported="false" />
         <activity
-            android:name=".ui.fragmentos.Frequency"
+            android:name=".fragmentos.Frequency"
             android:exported="false" />
         <activity
             android:name=".frecuencia"
