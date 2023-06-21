@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:id="@+id/fragment_mapa"
-    tools:context=".ui.fragmentos.Mapa">
+    tools:context=".fragmentos.Mapa">
 
     <fragment
         android:layout_width="match_parent"
