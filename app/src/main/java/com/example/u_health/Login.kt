@@ -156,7 +156,7 @@ class Login : AppCompatActivity() {
             .addOnSuccessListener{
                 if(!it.isEmpty)
                 {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, Menu::class.java))
                     Toast.makeText(this, "Bienvenido Nuevamente:D", Toast.LENGTH_SHORT).show()
                     finish()
                 }
