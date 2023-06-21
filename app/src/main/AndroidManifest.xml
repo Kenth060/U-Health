@@ -35,6 +35,15 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".fragmentos.FrequencyData"
+            android:exported="false" />
+        <activity
+            android:name=".fragmentos.Frequency"
+            android:exported="false" />
+        <activity
+            android:name=".frecuencia"
+            android:exported="false" />
+        <activity
             android:name=".Menu"
             android:exported="false"
             android:label="@string/title_activity_menu" />
