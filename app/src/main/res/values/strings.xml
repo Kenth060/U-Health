@@ -37,5 +37,6 @@
     <string name="title_recordatorios">Recordatorios</string>
     <string name="title_informacion">Informacion</string>
     <string name="title_mapa">Mapa</string>
+    <string name="strRecordatorio">Recordatorio</string>
 
 </resources>
