@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragmentos.Frequency">
@@ -73,16 +74,15 @@
 
     <androidx.constraintlayout.utils.widget.MotionButton
         android:id="@+id/btnSiguiente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="397dp"
+        android:layout_height="53dp"
         android:background="@drawable/background_button"
         android:text="Siguiente"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextViewActividadDosis"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintVertical_bias="0.868" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

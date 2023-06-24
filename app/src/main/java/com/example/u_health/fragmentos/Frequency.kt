@@ -12,6 +12,8 @@ import android.widget.NumberPicker
 import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.u_health.FragmentIMC
 import com.example.u_health.R
 import com.example.u_health.databinding.ActivityFrequencyBinding
 import com.example.u_health.databinding.VistaFrecuenciaBinding
@@ -35,7 +37,7 @@ class Frequency : AppCompatActivity() {
             valida()
         }
         bindingF.btnSiguiente.setOnClickListener {
-            //startActivity(Intent(this, Notificacion::class.java))
+
         }
     }
 

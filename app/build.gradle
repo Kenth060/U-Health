@@ -68,4 +68,9 @@ dependencies {
     //firebase database
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
+    //lottieFile
+    implementation 'com.airbnb.android:lottie:4.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.u_health.FragmentIMC
 import com.example.u_health.R
 import com.example.u_health.databinding.FragmentRecordatoriosBinding
 
@@ -35,7 +36,8 @@ class Recordatorios : Fragment() {
         _binding = FragmentRecordatoriosBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.btnAdd.setOnClickListener {
-            val fragment = FragmentDatosSearch()
+            //val fragment = FragmentDatosSearch()
+            val fragment = FragmentIMC()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fgRecordatorio, fragment)
                 .commit()
