@@ -36,8 +36,7 @@ class Recordatorios : Fragment() {
         _binding = FragmentRecordatoriosBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.btnAdd.setOnClickListener {
-            //val fragment = FragmentDatosSearch()
-            val fragment = FragmentIMC()
+            val fragment = FragmentDatosSearch()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fgRecordatorio, fragment)
                 .commit()
