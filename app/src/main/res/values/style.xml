@@ -25,4 +25,20 @@
         <item name="fontFamily">@font/courgette</item>
     </style>
 
+    <style name="ButtonNoBorder" parent="Widget.AppCompat.Button">
+        <item name="android:background">@null</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textAppearance">@style/ButtonTextAppearance</item>
+    </style>
+
+    <style name="ButtonTextAppearance" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">?attr/colorControlNormal</item>
+    </style>
+
+    <style name="Timepicker" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">#3e838c</item>
+    </style>
+
 </resources>
