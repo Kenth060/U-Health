@@ -13,6 +13,7 @@ class Menu : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
