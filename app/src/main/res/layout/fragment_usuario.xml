@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#efefef"
-    tools:context=".FragmentIMC">
+    tools:context=".fragmentos.Usuario">
 
 
     <androidx.cardview.widget.CardView
@@ -29,24 +29,25 @@
             android:padding="10dp">
 
             <TextView
+                style="@style/Titulos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bienvenido"
-                android:textSize="24sp" />
+                android:text="Bienvenido" />
 
             <TextView
+                style="@style/Titulos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="name"
-                android:textSize="24sp" />
+                android:paddingLeft="4dp"
+                android:text="nuevamente,"/>
 
             <TextView
+                android:id="@+id/txt_Usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="al IMC"
-                android:textSize="24sp" />
+                android:paddingStart="4dp"
+                android:textAppearance="@style/Titulos"
+                android:text="@string/title_usuario" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -54,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
+
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieAnimationView"
                 android:layout_width="246dp"

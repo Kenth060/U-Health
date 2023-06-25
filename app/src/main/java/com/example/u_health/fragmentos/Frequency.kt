@@ -1,7 +1,6 @@
 package com.example.u_health.fragmentos
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -12,9 +11,6 @@ import android.widget.NumberPicker
 import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.example.u_health.FragmentIMC
-import com.example.u_health.R
 import com.example.u_health.databinding.ActivityFrequencyBinding
 import com.example.u_health.databinding.VistaFrecuenciaBinding
 import com.example.u_health.databinding.VistaFrecuenciaDosisBinding

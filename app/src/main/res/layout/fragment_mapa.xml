@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:fitsSystemWindows="true"
     android:id="@+id/fragment_mapa"
     tools:context=".fragmentos.Mapa">
@@ -12,8 +13,8 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_mapas"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        android:id="@+id/mapa"
+         />
 
 
 

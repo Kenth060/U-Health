@@ -6,4 +6,23 @@
         <item name="android:textColorSecondary">@color/dialog_text_secondary</item>
     </style>
 
+    <style name="Texto_Negrita" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="android:color">@color/Blue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Texto_Normal" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="android:color">@color/Blue</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Titulos" parent="">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#34495E</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/courgette</item>
+    </style>
+
 </resources>

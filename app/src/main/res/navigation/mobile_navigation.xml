@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_recordatorios">
+    app:startDestination="@+id/navigation_usuario">
 
     <fragment
         android:id="@+id/navigation_recordatorios"
         android:name="com.example.u_health.fragmentos.Recordatorios"
         android:label="@string/title_recordatorios"
         tools:layout="@layout/fragment_recordatorios" />
+
+    <fragment
+        android:id="@+id/navigation_usuario"
+        android:name="com.example.u_health.fragmentos.Usuario"
+        android:label="@string/title_usuario"
+        tools:layout="@layout/fragment_usuario" />
 
     <fragment
         android:id="@+id/navigation_informacion"
@@ -22,4 +28,7 @@
         android:name="com.example.u_health.fragmentos.Mapa"
         android:label="@string/title_mapa"
         tools:layout="@layout/fragment_mapa" />
+
+
+
 </navigation>

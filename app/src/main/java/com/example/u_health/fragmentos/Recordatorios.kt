@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.u_health.FragmentIMC
 import com.example.u_health.R
 import com.example.u_health.databinding.FragmentRecordatoriosBinding
 
