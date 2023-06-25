@@ -39,5 +39,7 @@
     <string name="title_mapa">Mapa</string>
     <string name="strRecordatorio">Recordatorio</string>
     <string name="title_usuario">Usuario</string>
+    <string name="nuevamente">nuevamente,</string>
+    <string name="bienvenido">Bienvenido</string>
 
 </resources>

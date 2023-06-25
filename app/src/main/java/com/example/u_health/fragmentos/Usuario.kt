@@ -23,7 +23,7 @@ class Usuario : Fragment() {
         _binding = FragmentUsuarioBinding.inflate(inflater, container, false)
         val view = binding.root
 
-
+        binding.txtUsuario.text="Kenneth"
 
         return view
     }
