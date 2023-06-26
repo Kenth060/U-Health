@@ -23,15 +23,17 @@ class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val GOOGLE_SIGN_IN = 100
     private val callbackManager = CallbackManager.Factory.create()
+    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
         val currentUser = firebaseAuth.currentUser
 
         if (currentUser != null)
@@ -44,26 +46,23 @@ class Login : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             if (validarUsuario())
             {
-                firebaseAuth.signInWithEmailAndPassword(
-                    binding.txtCorreo.text.toString(),
-                    binding.txtContraseA.text.toString()
-                ).addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful)
-                    {
-                        val id=firebaseAuth.currentUser?.uid
-
-                        if (id != null)
+                firebaseAuth.signInWithEmailAndPassword(binding.txtCorreo.text.toString(), binding.txtContraseA.text.toString())
+                    .addOnCompleteListener(this)
+                    { task ->
+                        if (task.isSuccessful)
                         {
-                            validar_perfil(id)
-                            binding.txtCorreo.setText("")
-                            binding.txtContraseA.setText("")
+                            val id=firebaseAuth.currentUser?.uid
+
+                            if (id != null)
+                            {
+                                validar_perfil(id)
+                                binding.txtCorreo.setText("")
+                                binding.txtContraseA.setText("")
+                            }
                         }
-
+                        else
+                        { Toast.makeText(this, "El Usuario y Clave no existen.", Toast.LENGTH_SHORT).show() }
                     }
-                    else
-                    { Toast.makeText(this, "El Usuario y Clave no existen.", Toast.LENGTH_SHORT).show() }
-                }
-
             }
         }
 
@@ -115,22 +114,30 @@ class Login : AppCompatActivity() {
 
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == GOOGLE_SIGN_IN) {
+        if (requestCode == GOOGLE_SIGN_IN)
+        {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-
-            try {
+            try
+            {
                 val account = task.getResult(ApiException::class.java)
 
-                if (account != null) {
+                if (account != null)
+                {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
 
                     FirebaseAuth.getInstance().signInWithCredential(credential)
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                startActivity(Intent(this, CrearPerfil::class.java))
-                                Toast.makeText(this, "Cree un perfil :D", Toast.LENGTH_SHORT).show()
-                                binding.txtCorreo.setText("")
-                                binding.txtContraseA.setText("")
+                        .addOnCompleteListener(this)
+                        { task ->
+                            if (task.isSuccessful)
+                            {
+                                val id=firebaseAuth.currentUser?.uid
+                                if (id != null)
+                                {
+                                    validar_perfil(id)
+                                    binding.txtCorreo.setText("")
+                                    binding.txtContraseA.setText("")
+                                }
+
                             }
                         }
                 }

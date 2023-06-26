@@ -88,6 +88,19 @@ class Mapa : Fragment() , OnMapReadyCallback {
         val zoom = 16f
         val miubicacion = LatLng(12.11170942302386, -86.23239262022197)
         MAP?.animateCamera(CameraUpdateFactory.newLatLngZoom(miubicacion, zoom))
+
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this.requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            return
+        }
+        MAP.isMyLocationEnabled=true
     }
 
     private fun isLocationPermissionGranted()= ContextCompat.checkSelfPermission(requireContext(),

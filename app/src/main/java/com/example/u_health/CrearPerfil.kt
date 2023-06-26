@@ -48,24 +48,6 @@ class CrearPerfil : AppCompatActivity()
         bindingAltura = VistaAlturaBinding.inflate(layoutInflater)
         bindingEnfermedad = VistaEnfermedadBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*
-
-            val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
-
-            val auth : FirebaseAuth= FirebaseAuth.getInstance()
-
-
-            fireDB.collection("Usuarios").whereEqualTo(FieldPath.documentId(), auth.currentUser?.uid).get()
-                .addOnSuccessListener{
-                    if(!it.isEmpty)
-                    {
-                        startActivity(Intent(this, MainActivity::class.java))
-                        Toast.makeText(this, "Bienvenido Nuevamente:D", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                }
-*/
-
 
         //Inicializando el sharedPreferences de forma global
         sharedPref = getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE)
@@ -405,8 +387,8 @@ class CrearPerfil : AppCompatActivity()
         editor.apply()
 
     }
-    private fun Agregar_Usuario() {
-
+    private fun Agregar_Usuario()
+    {
         val genero = sharedPref.getString("genero", "")
         val enfermedad = sharedPref.getString("enfermedad", "")
         val peso = sharedPref.getString("peso", "")
@@ -444,8 +426,6 @@ class CrearPerfil : AppCompatActivity()
         editor.apply()
 
         //siguiente pantalla
-        startActivity(Intent(this, MainActivity::class.java))
-
-
+        startActivity(Intent(this, Menu::class.java))
     }
 }

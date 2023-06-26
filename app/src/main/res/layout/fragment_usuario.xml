@@ -65,8 +65,6 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/corazon" />
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -111,10 +109,11 @@
                 android:src="@drawable/altura" />
 
             <TextView
+                android:id="@+id/txtAltura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="1.75"
+                android:text="1.75 M"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -143,7 +142,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Peso"
+                android:text="@string/peso"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -162,10 +161,11 @@
                 android:src="@drawable/pesoimc" />
 
             <TextView
+                android:id="@+id/txtPeso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="75kg"
+                android:text="75 Kg"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -195,7 +195,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edad"
+                android:text="@string/edad"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -214,10 +214,11 @@
                 android:src="@drawable/edadimc" />
 
             <TextView
+                android:id="@+id/txt_Edad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="20"
+                android:text="20 años"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -246,7 +247,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Peso ideal"
+                android:text="@string/peso_ideal"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -265,10 +266,11 @@
                 android:src="@drawable/peso_ideal" />
 
             <TextView
+                android:id="@+id/txt_Peso_Ideal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="100kg"
+                android:text="100 Kg"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -315,6 +317,7 @@
                 android:src="@drawable/calorias" />
 
             <TextView
+                android:id="@+id/txt_Calorias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
@@ -365,10 +368,11 @@
                 android:src="@drawable/bmi" />
 
             <TextView
+                android:id="@+id/txt_IMC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="120"
+                android:text="20"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
