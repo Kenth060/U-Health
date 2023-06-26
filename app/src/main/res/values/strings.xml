@@ -43,5 +43,6 @@
     <string name="bienvenido">Bienvenido</string>
     <string name="edad">Edad</string>
     <string name="peso_ideal">Peso ideal</string>
+    <string name="title_citas">Citas</string>
 
 </resources>
