@@ -31,6 +31,7 @@ class Informacion : Fragment() {
 
         fbinding = FragmentInformacionBinding.inflate(inflater, container, false)
         val view: View = binding.root
+
         binding.btnanalgesico.setOnClickListener {
             val intent = Intent(requireContext(), informacion_medicamentos::class.java)
             startActivity(intent)
