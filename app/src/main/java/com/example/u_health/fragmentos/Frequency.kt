@@ -44,6 +44,7 @@ class Frequency : AppCompatActivity() {
         bindingF.btnGuardar.setOnClickListener {
             if(!bindingF.txtHora.text.equals("Hora")&&
                 !bindingF.txtDosis.text.equals("Dosis")){
+                Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show()
 
             }else{
                 Toast.makeText(this, "Rellene los datos", Toast.LENGTH_SHORT).show()

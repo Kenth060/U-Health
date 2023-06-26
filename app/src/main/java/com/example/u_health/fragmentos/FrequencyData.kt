@@ -3,6 +3,7 @@ package com.example.u_health.fragmentos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.u_health.R
 import com.example.u_health.databinding.ActivityFrequencyDataBinding
 
@@ -18,9 +19,17 @@ class FrequencyData : AppCompatActivity() {
             bindingFD.medicamentoSelect.text = valor
         }
         bindingFD.btnGuardar.setOnClickListener {
-            val intent = Intent(this, Frequency::class.java)
-            intent.putExtra("selectedItem", valor)
-            startActivity(intent)
+            if(bindingFD.radioButton1.isChecked || bindingFD.radioButton2.isChecked || bindingFD.radioButton3.isChecked){
+                val intent = Intent(this, Frequency::class.java)
+                intent.putExtra("selectedItem", valor)
+                startActivity(intent)
+
+            }else{
+                Toast.makeText(this, "Rellene los datos Juan dundo", Toast.LENGTH_SHORT).show()
+            }
+
         }
+
+
     }
 }

@@ -74,7 +74,8 @@
 
     <androidx.constraintlayout.utils.widget.MotionButton
         android:id="@+id/btn_guardar"
-        android:layout_width="397dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="10dp"
         android:layout_height="53dp"
         android:background="@drawable/background_button"
         android:text="Guardar"
