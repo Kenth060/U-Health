@@ -5,12 +5,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.u_health.R
 
+
 class PastillasViewHolder(view: View) : RecyclerView.ViewHolder(view)
 {
+    val Nombre_Pastilla = view.findViewById<TextView>(R.id.txtInfoPastilla)
 
-    val Nombre_Pastilla = view.findViewById<TextView>(R.id.txtPastilla)
+
 
     fun render(Pill:String)
-    { Nombre_Pastilla.text=Pill }
+    {
+        Nombre_Pastilla.text=Pill
+    }
 
 }

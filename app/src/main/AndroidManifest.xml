@@ -17,6 +17,9 @@
         android:theme="@style/Theme.UHealth"
         tools:targetApi="33">
         <activity
+            android:name=".Informacion_Detalle"
+            android:exported="false" />
+        <activity
             android:name=".informacion_medicamentos"
             android:exported="false" />
 
