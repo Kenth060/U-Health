@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import android.widget.NumberPicker
 import android.widget.PopupWindow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.u_health.TimePickerFragment
 import com.example.u_health.databinding.ActivityFrequencyBinding
 import com.example.u_health.databinding.VistaFrecuenciaBinding
 import com.example.u_health.databinding.VistaFrecuenciaDosisBinding
@@ -20,6 +22,7 @@ class Frequency : AppCompatActivity() {
     private lateinit var bindingF : ActivityFrequencyBinding
     private lateinit var bindingVF : VistaFrecuenciaBinding
     private lateinit var bindingVFD : VistaFrecuenciaDosisBinding
+    private lateinit var cantidad : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingF = ActivityFrequencyBinding.inflate(layoutInflater)
@@ -32,19 +35,32 @@ class Frequency : AppCompatActivity() {
             initNumberPicker()
             valida()
         }
-        bindingF.btnSiguiente.setOnClickListener {
-
+        bindingVFD.btnAceptar.setOnClickListener {
+            cantidad = bindingVFD.cantidadCapsules.text.toString()
+            bindingF.txtDosis.setText("$cantidad")
+            popupWindow.dismiss()
         }
+
+        bindingF.btnGuardar.setOnClickListener {
+            if(!bindingF.txtHora.text.equals("Hora")&&
+                !bindingF.txtDosis.text.equals("Dosis")){
+
+            }else{
+                Toast.makeText(this, "Rellene los datos", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+
     }
 
     private fun valida() {
         actividadTwoNumberPicker(
-            { showWindowFloat(0.89,bindingVF.root) },
             bindingVF.numberPickerHora,
             bindingVF.numberPickerMinutos,
             bindingVF.textviewPies,
             bindingVF.textviewPulgadas,
-            bindingF.TextViewActividad,
+            bindingF.txtHora,
             bindingVF.alturaVista
         )
         dosis()
@@ -52,17 +68,17 @@ class Frequency : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun dosis(){
-        bindingF.TextViewActividadDosis.setOnTouchListener { _, event ->
+        bindingF.txtDosis.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 val touchX = event.x.toInt() // Posición X del evento táctil
-                val imageWidth = bindingF.TextViewActividadDosis.compoundDrawablesRelative[2]?.bounds?.width() ?: 0 // Ancho de la imagen
+                val imageWidth = bindingF.txtDosis.compoundDrawablesRelative[2]?.bounds?.width() ?: 0 // Ancho de la imagen
 
                 // Ajustar las coordenadas para la nueva posición del TextView
-                val textViewEndPosition = bindingF.TextViewActividadDosis.width
+                val textViewEndPosition = bindingF.txtDosis.width
                 val touchThreshold = textViewEndPosition - imageWidth
 
                 // Verificar si el evento táctil ocurrió dentro de la región de la imagen
-                if (touchX >= bindingF.TextViewActividadDosis.width - touchThreshold) {
+                if (touchX >= bindingF.txtDosis.width - touchThreshold) {
                     showWindowFloat(0.89,bindingVFD.root)
                 }
             }
@@ -82,7 +98,7 @@ class Frequency : AppCompatActivity() {
         popupWindow.showAtLocation(popupView.rootView, Gravity.CENTER, 0, 0)
     }
     @SuppressLint("ClickableViewAccessibility")
-    private fun actividadTwoNumberPicker(mtdPeso: () -> Unit, numberPicker1: NumberPicker, numberPicker2: NumberPicker,
+    private fun actividadTwoNumberPicker(numberPicker1: NumberPicker, numberPicker2: NumberPicker,
                                          textview1: TextView, textview2: TextView, TextViewActividadPeso: TextView
                                          , pesoVista: ConstraintLayout
     ) {
@@ -97,11 +113,11 @@ class Frequency : AppCompatActivity() {
             textview2.text = newVal.toString()
         }
         TextViewActividadPeso.setOnTouchListener { _, event ->
-            codeClick(pesoVista,event,mtdPeso,TextViewActividadPeso)
+            codeClick(pesoVista,event,TextViewActividadPeso)
         }
     }
     private fun codeClick(vista: ConstraintLayout, event: MotionEvent,
-                          mtd: () -> Unit, TextViewActividad: TextView
+                           TextViewActividad: TextView
     ): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             val touchX = event.x.toInt() // Posición X del evento táctil
@@ -114,7 +130,7 @@ class Frequency : AppCompatActivity() {
             // Verificar si el evento táctil ocurrió dentro de la región de la imagen
             if (touchX >= TextViewActividad.width - touchThreshold) {
                 vista.visibility = View.VISIBLE
-                mtd()
+                showTimePicker()
             }
         }
         return true
@@ -126,6 +142,15 @@ class Frequency : AppCompatActivity() {
         bindingVF.numberPickerHora.maxValue = 24
         bindingVF.numberPickerMinutos.minValue = 0
         bindingVF.numberPickerMinutos.maxValue = 60
+
+    }
+    private fun showTimePicker(){
+        val timepicker = TimePickerFragment{currentDate(it)}
+        timepicker.show(supportFragmentManager,"timepicker")
+    }
+
+    private fun currentDate(time : String) {
+        bindingF.txtHora.text = "$time"
 
     }
 }

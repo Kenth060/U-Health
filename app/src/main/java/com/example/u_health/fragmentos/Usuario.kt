@@ -41,13 +41,13 @@ class Usuario : Fragment()
                 val peso=it.get("Peso").toString().toDouble()
                 val Peso_Ideal=(((altura*100)-100+((edad/10)*0.9))*2.2).roundToInt()
 
-                binding.txtUsuario.text=it.get("Nombre").toString()
+                //binding.txtUsuario.text=it.get("Nombre").toString()
                 binding.txtAltura.text="${(altura*100).roundToInt()} cm"
                 binding.txtPeso.text="$peso lbs"
                 binding.txtEdad.text="$edad años"
                 binding.txtPesoIdeal.text= "$Peso_Ideal lbs"
                 val IMC=((peso/2.2)/altura.pow(2)).roundToInt()
-                binding.txtIMC.text=IMC.toString()
+                //binding.txtIMC.text=IMC.toString()
 
                 if( (it.get("Genero").toString())=="Masculino" )
                 {
