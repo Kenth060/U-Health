@@ -27,7 +27,7 @@ class SplashScreen : AppCompatActivity()
                 R.anim.anim1)
             LogoApp.startAnimation(AnimLogo)
 
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, Menu::class.java)
 
             AnimLogo.setAnimationListener(object: Animation.AnimationListener {
 
