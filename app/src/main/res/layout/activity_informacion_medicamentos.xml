@@ -6,28 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".informacion_medicamentos">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_citas"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/abInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp">
+        android:background="@color/Blue"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btn_cancelar"
-            style="@style/ButtonNoBorder"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/borde_null"
-            android:text="Cancelar"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-    </androidx.appcompat.widget.Toolbar>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_Info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/abInfo">
 
     </androidx.recyclerview.widget.RecyclerView>
 

@@ -61,5 +61,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAceptar"
+        android:layout_width="95dp"
+        android:layout_height="37dp"
+        android:background="@color/Blue"
+        android:fontFamily="@font/abel"
+        android:text="@string/aceptar"
+        android:textAlignment="center"
+        android:textColor="@color/textologin"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cantidadCapsules"
+        app:layout_constraintVertical_bias="0.554" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

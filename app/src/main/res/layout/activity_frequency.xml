@@ -45,9 +45,9 @@
         app:layout_constraintTop_toBottomOf="@+id/label" />
 
     <TextView
-        android:id="@+id/TextViewActividad"
-        android:layout_width="263dp"
-        android:layout_height="43dp"
+        android:id="@+id/txtHora"
+        android:layout_width="259dp"
+        android:layout_height="52dp"
         android:layout_marginTop="32dp"
         android:drawableEnd="@drawable/arrow2"
         android:gravity=""
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/TextViewActividadDosis"
+        android:id="@+id/txt_dosis"
         android:layout_width="263dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -70,19 +70,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.277"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewActividad" />
+        app:layout_constraintTop_toBottomOf="@+id/txtHora" />
 
     <androidx.constraintlayout.utils.widget.MotionButton
-        android:id="@+id/btnSiguiente"
+        android:id="@+id/btn_guardar"
         android:layout_width="397dp"
         android:layout_height="53dp"
         android:background="@drawable/background_button"
-        android:text="Siguiente"
+        android:text="Guardar"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewActividadDosis"
+        app:layout_constraintTop_toBottomOf="@+id/txt_dosis"
         app:layout_constraintVertical_bias="0.868" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

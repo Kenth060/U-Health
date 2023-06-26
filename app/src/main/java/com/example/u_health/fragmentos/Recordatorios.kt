@@ -39,7 +39,6 @@ class Recordatorios : Fragment() {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fgRecordatorio, fragment)
                 .commit()
-
             binding.btnAdd.visibility = View.INVISIBLE
         }
         return view

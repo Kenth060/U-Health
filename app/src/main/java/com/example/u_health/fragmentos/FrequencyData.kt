@@ -17,7 +17,7 @@ class FrequencyData : AppCompatActivity() {
         if (valor != null) {
             bindingFD.medicamentoSelect.text = valor
         }
-        bindingFD.btnSiguiente.setOnClickListener {
+        bindingFD.btnGuardar.setOnClickListener {
             val intent = Intent(this, Frequency::class.java)
             intent.putExtra("selectedItem", valor)
             startActivity(intent)
