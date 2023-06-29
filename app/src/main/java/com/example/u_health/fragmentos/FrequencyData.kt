@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.Navigation
 import com.example.u_health.R
 import com.example.u_health.databinding.FragmentDatosSearchBinding
 import com.example.u_health.databinding.FragmentFrequencyDataBinding
@@ -18,19 +19,14 @@ private const val ARG_PARAM2 = "param2"
 
 
 class FrequencyData : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     private var _binding: FragmentFrequencyDataBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -48,12 +44,10 @@ class FrequencyData : Fragment() {
             binding.medicamentoSelect.text = valor
         }
         binding.btnGuardar.setOnClickListener {
-            if(binding.radioButton1.isChecked || binding.radioButton2.isChecked || binding.radioButton3.isChecked){
+            if(binding.radioButton1.isChecked || binding.radioButton2.isChecked || binding.radioButton3.isChecked)
+            {
 
-                val fragment = Frequency()
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentData, fragment)
-                    .commit()
+                Navigation.findNavController(view).navigate(R.id.frequency)
 
             }else{
                 Toast.makeText(requireContext(), "Rellene los datos Juan dundo", Toast.LENGTH_SHORT).show()
@@ -64,16 +58,5 @@ class FrequencyData : Fragment() {
         return view
     }
 
-    companion object {
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String,selectedItem: String) =
-            FrequencyData().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                    putString("selectedItem", selectedItem)
-                }
-            }
-    }
 }

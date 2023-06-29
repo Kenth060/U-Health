@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.Navigation
 import com.example.u_health.R
 import com.example.u_health.databinding.FragmentDatosSearchBinding
 import com.example.u_health.databinding.FragmentRecordatoriosBinding
@@ -52,10 +53,8 @@ class FragmentDatosSearch : Fragment() {
         binding.userList.adapter = userAdapter
         binding.userList.setOnItemClickListener { _, _, position, _ ->
             val selectedItem = binding.userList.getItemAtPosition(position)
-            val fragment = FrequencyData()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentDatosSearch, fragment)
-                .commit()
+
+            view?.let { Navigation.findNavController(it).navigate(R.id.frequencyData) }
 
         }
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{

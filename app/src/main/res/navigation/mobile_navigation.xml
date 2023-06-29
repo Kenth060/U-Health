@@ -9,7 +9,11 @@
         android:id="@+id/navigation_recordatorios"
         android:name="com.example.u_health.fragmentos.Recordatorios"
         android:label="@string/title_recordatorios"
-        tools:layout="@layout/fragment_recordatorios" />
+        tools:layout="@layout/fragment_recordatorios" >
+        <action
+            android:id="@+id/action_navigation_recordatorios_to_fragmentDatosSearch2"
+            app:destination="@id/fragmentDatosSearch2" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_citas"
@@ -34,7 +38,33 @@
         android:name="com.example.u_health.fragmentos.Mapa"
         android:label="@string/title_mapa"
         tools:layout="@layout/fragment_mapa" />
-
+    <fragment
+        android:id="@+id/fragmentDatosSearch2"
+        android:name="com.example.u_health.fragmentos.FragmentDatosSearch"
+        android:label="fragment_datos_search"
+        tools:layout="@layout/fragment_datos_search" >
+        <action
+            android:id="@+id/action_fragmentDatosSearch2_to_frequencyData"
+            app:destination="@id/frequencyData" />
+    </fragment>
+    <fragment
+        android:id="@+id/frequencyData"
+        android:name="com.example.u_health.fragmentos.FrequencyData"
+        android:label="fragment_frequency_data"
+        tools:layout="@layout/fragment_frequency_data" >
+        <action
+            android:id="@+id/action_frequencyData_to_frequency"
+            app:destination="@id/frequency" />
+    </fragment>
+    <fragment
+        android:id="@+id/frequency"
+        android:name="com.example.u_health.fragmentos.Frequency"
+        android:label="fragment_frequency"
+        tools:layout="@layout/fragment_frequency" >
+        <action
+            android:id="@+id/action_frequency_to_navigation_recordatorios"
+            app:destination="@id/navigation_recordatorios" />
+    </fragment>
 
 
 </navigation>
