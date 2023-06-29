@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.navigation.Navigation
 import com.example.u_health.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity()
@@ -27,7 +29,8 @@ class SplashScreen : AppCompatActivity()
                 R.anim.anim1)
             LogoApp.startAnimation(AnimLogo)
 
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, Menu::class.java)
+            //Navigation.findNavController(view).navigate(R.id.frequency)
 
             AnimLogo.setAnimationListener(object: Animation.AnimationListener {
 

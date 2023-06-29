@@ -9,19 +9,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation
 import com.example.u_health.R
+import com.example.u_health.databinding.FragmentCitasBinding
 import com.example.u_health.databinding.FragmentDatosSearchBinding
+import com.example.u_health.databinding.FragmentFrequencyDataBinding
 import com.example.u_health.databinding.FragmentRecordatoriosBinding
 
 
 class FragmentDatosSearch : Fragment() {
+    var selectedItemV: String? = null
     private var _binding: FragmentDatosSearchBinding? = null
     private val binding get() = _binding!!
-    private var _bindingListView: FragmentRecordatoriosBinding? = null
-    private val bindingListView get() = _bindingListView!!
+    private var _bindingData: FragmentFrequencyDataBinding? = null
+    private val bindingData get() = _bindingData!!
+    private var param1: String? = null
+    private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +40,7 @@ class FragmentDatosSearch : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDatosSearchBinding.inflate(inflater, container, false)
-        _bindingListView = FragmentRecordatoriosBinding.inflate(inflater,container,false)
+        _bindingData = FragmentFrequencyDataBinding.inflate(inflater,container,false)
         val view = binding.root
         funcionalidad()
         val toolbar: Toolbar = binding!!.tbRecordatorio
@@ -47,13 +54,9 @@ class FragmentDatosSearch : Fragment() {
         val userAdapter : ArrayAdapter<String> = ArrayAdapter(
             requireContext(), android.R.layout.simple_list_item_1,user
         )
-        val valor = arguments?.getString("selectedItem")
-        val bundle = Bundle()
-        bundle.putString("valor", valor)
         binding.userList.adapter = userAdapter
         binding.userList.setOnItemClickListener { _, _, position, _ ->
             val selectedItem = binding.userList.getItemAtPosition(position)
-
             view?.let { Navigation.findNavController(it).navigate(R.id.frequencyData) }
 
         }
@@ -128,5 +131,6 @@ class FragmentDatosSearch : Fragment() {
         )
         return medicamentos
     }
+
 
 }
