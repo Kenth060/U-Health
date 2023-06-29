@@ -1,5 +1,6 @@
 package com.example.u_health.fragmentos
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,7 +22,7 @@ private const val ARG_SELECTED_ITEM = "selectedItem"
 
 class FrequencyData : Fragment() {
 
-
+    private lateinit var valorCheck : String
     private var selectedItem: String? = null
 
     private var _binding: FragmentFrequencyDataBinding? = null
@@ -43,10 +44,32 @@ class FrequencyData : Fragment() {
 
         _binding= FragmentFrequencyDataBinding.inflate(inflater,container,false)
         val view = binding.root
+        binding.radioButton1.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                valorCheck = binding.radioButton1.text.toString()
+            }
+        }
+
+        binding.radioButton2.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                valorCheck = binding.radioButton2.text.toString()
+            }
+        }
+
+        binding.radioButton3.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                valorCheck = binding.radioButton3.text.toString()
+            }
+        }
+
 
         binding.btnGuardar.setOnClickListener {
             if(binding.radioButton1.isChecked || binding.radioButton2.isChecked || binding.radioButton3.isChecked)
             {
+                val sharedPreferences = context?.getSharedPreferences("mi_pref", Context.MODE_PRIVATE)
+                val editor = sharedPreferences?.edit()
+                editor?.putString("frecuenciaDato", valorCheck)
+                editor?.apply()
                 Navigation.findNavController(view).navigate(R.id.frequency)
 
             }else{

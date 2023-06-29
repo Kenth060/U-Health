@@ -1,5 +1,6 @@
 package com.example.u_health.fragmentos
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -57,6 +58,11 @@ class FragmentDatosSearch : Fragment() {
         binding.userList.adapter = userAdapter
         binding.userList.setOnItemClickListener { _, _, position, _ ->
             val selectedItem = binding.userList.getItemAtPosition(position)
+            val sharedPreferences = context?.getSharedPreferences("mi_pref", Context.MODE_PRIVATE)
+            val editor = sharedPreferences?.edit()
+            editor?.putString("selectedItem", selectedItem.toString())
+            editor?.apply()
+
             view?.let { Navigation.findNavController(it).navigate(R.id.frequencyData) }
 
         }

@@ -1,6 +1,7 @@
 package com.example.u_health.fragmentos
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -46,6 +47,7 @@ class Frequency : Fragment() {
         _bindingVFD = VistaFrecuenciaDosisBinding.inflate(inflater, container, false)
         val view = binding.root
 
+
         valida()
         bindingVFD.btnAceptar.setOnClickListener {
             cantidad = bindingVFD.cantidadCapsules.text.toString()
@@ -56,7 +58,19 @@ class Frequency : Fragment() {
         binding.btnSiguiente.setOnClickListener {
             if(!binding.txtHora.text.equals("Hora")&&
                 !binding.txtDosis.text.equals("Dosis")){
+                val sharedPreferences = context?.getSharedPreferences("mi_pref", Context.MODE_PRIVATE)
+                val medicamentoSeleccionado = sharedPreferences?.getString("selectedItem", "")
+                val frecuenciaDatosSeleccionado = sharedPreferences?.getString("frecuenciaDato", "")
+                val hora =  binding.txtHora.text.toString()
+                val dosis = binding.txtDosis.text.toString()
                 Toast.makeText(requireContext(), "Guardado", Toast.LENGTH_SHORT).show()
+
+
+                //luego de guardar los datos lo limpiamos el shared por si agrega
+                //otro recordatorio y no queden guardados los mismos datos
+                val editor = sharedPreferences?.edit()
+                editor?.clear()
+                editor?.apply()
 
             }else{
                 Toast.makeText(requireContext(), "Rellene los datos", Toast.LENGTH_SHORT).show()
