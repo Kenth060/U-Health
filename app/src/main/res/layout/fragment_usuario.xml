@@ -63,7 +63,7 @@
                 android:layout_marginTop="22dp"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/corazon" />
+                app:lottie_rawRes="@raw/chillydoctor" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
 
