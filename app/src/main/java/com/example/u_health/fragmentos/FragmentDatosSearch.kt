@@ -46,12 +46,17 @@ class FragmentDatosSearch : Fragment() {
         val userAdapter : ArrayAdapter<String> = ArrayAdapter(
             requireContext(), android.R.layout.simple_list_item_1,user
         )
+        val valor = arguments?.getString("selectedItem")
+        val bundle = Bundle()
+        bundle.putString("valor", valor)
         binding.userList.adapter = userAdapter
         binding.userList.setOnItemClickListener { _, _, position, _ ->
             val selectedItem = binding.userList.getItemAtPosition(position)
-            val intent = Intent(requireContext(), FrequencyData::class.java)
-            intent.putExtra("selectedItem", selectedItem.toString())
-            startActivity(intent)
+            val fragment = FrequencyData()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentDatosSearch, fragment)
+                .commit()
+
         }
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
