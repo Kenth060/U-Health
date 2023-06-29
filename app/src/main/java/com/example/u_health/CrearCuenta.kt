@@ -33,14 +33,6 @@ class CrearCuenta : AppCompatActivity()
         binding.btnCrearCuenta.setOnClickListener{
             if (valida().equals(true))
             {
-
-                val Mensaje = AlertDialog.Builder(this)
-                Mensaje.setTitle("Operación Exitosa")
-                Mensaje.setMessage("Se ha agregado la cuenta correctamente ;)")
-                Mensaje.setPositiveButton("Aceptar",null)
-                val dialog : AlertDialog = Mensaje.create()
-                dialog.show()
-
                 addCuentaUsuario()
 
                 //onBackPressed()
@@ -114,9 +106,18 @@ class CrearCuenta : AppCompatActivity()
         firebaseAuth.createUserWithEmailAndPassword(binding.txtCrearCorreo.text.toString(),
             binding.txtCrearContraseA.text.toString())
             .addOnCompleteListener{task ->
-                if (task.isSuccessful){
+                if (task.isSuccessful)
+                {
+                    val Mensaje = AlertDialog.Builder(this)
+                    Mensaje.setTitle("Operación Exitosa")
+                    Mensaje.setMessage("Se ha agregado la cuenta correctamente ;)")
+                    Mensaje.setPositiveButton("Aceptar",null)
+                    val dialog : AlertDialog = Mensaje.create()
+                    dialog.show()
                     Toast.makeText(this,"El Usuario ha sido creado.", Toast.LENGTH_SHORT).show();
-                }else{
+                }
+                else
+                {
                     Toast.makeText(this,"El Usuario no ha sido creado.", Toast.LENGTH_SHORT).show();
                 }
             }
