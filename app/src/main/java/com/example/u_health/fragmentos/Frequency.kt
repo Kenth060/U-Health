@@ -1,9 +1,10 @@
 package com.example.u_health.fragmentos
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -12,56 +13,82 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.u_health.R
 import com.example.u_health.TimePickerFragment
-import com.example.u_health.databinding.ActivityFrequencyBinding
+import com.example.u_health.databinding.FragmentFrequencyBinding
+import com.example.u_health.databinding.FragmentRecordatoriosBinding
 import com.example.u_health.databinding.VistaFrecuenciaBinding
 import com.example.u_health.databinding.VistaFrecuenciaDosisBinding
 
-class Frequency : AppCompatActivity() {
-    private lateinit var popupWindow: PopupWindow
-    private lateinit var bindingF : ActivityFrequencyBinding
-    private lateinit var bindingVF : VistaFrecuenciaBinding
-    private lateinit var bindingVFD : VistaFrecuenciaDosisBinding
+
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+class Frequency : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
     private lateinit var cantidad : String
+    private lateinit var popupWindow: PopupWindow
+    private var _binding: FragmentFrequencyBinding? = null
+    private val binding get() = _binding!!
+
+    private var _bindingVF: VistaFrecuenciaBinding? = null
+    private val bindingVF get() = _bindingVF!!
+    private var _bindingVFD: VistaFrecuenciaDosisBinding? = null
+    private val bindingVFD get() = _bindingVFD!!
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindingF = ActivityFrequencyBinding.inflate(layoutInflater)
-        bindingVF = VistaFrecuenciaBinding.inflate(layoutInflater)
-        bindingVFD = VistaFrecuenciaDosisBinding.inflate(layoutInflater)
-        setContentView(bindingF.root)
-        val valor = intent.getStringExtra("selectedItem")
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentFrequencyBinding.inflate(inflater, container, false)
+        _bindingVF = VistaFrecuenciaBinding.inflate(inflater, container, false)
+        _bindingVFD = VistaFrecuenciaDosisBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        val valor = arguments?.getString("selectedItem")
+        val bundle = Bundle()
+        bundle.putString("valor", valor)
         if (valor != null) {
-            bindingF.label.text = valor
+            binding.label.text = valor
             initNumberPicker()
             valida()
         }
         bindingVFD.btnAceptar.setOnClickListener {
             cantidad = bindingVFD.cantidadCapsules.text.toString()
-            bindingF.txtDosis.setText("$cantidad")
+            binding.txtDosis.setText("$cantidad")
             popupWindow.dismiss()
         }
 
-        bindingF.btnGuardar.setOnClickListener {
-            if(!bindingF.txtHora.text.equals("Hora")&&
-                !bindingF.txtDosis.text.equals("Dosis")){
-                Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show()
+        binding.btnSiguiente.setOnClickListener {
+            if(!binding.txtHora.text.equals("Hora")&&
+                !binding.txtDosis.text.equals("Dosis")){
+                Toast.makeText(requireContext(), "Guardado", Toast.LENGTH_SHORT).show()
 
             }else{
-                Toast.makeText(this, "Rellene los datos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Rellene los datos", Toast.LENGTH_SHORT).show()
             }
         }
 
-
-
+        return view
     }
-
     private fun valida() {
         actividadTwoNumberPicker(
             bindingVF.numberPickerHora,
             bindingVF.numberPickerMinutos,
             bindingVF.textviewPies,
             bindingVF.textviewPulgadas,
-            bindingF.txtHora,
+            binding.txtHora,
             bindingVF.alturaVista
         )
         dosis()
@@ -69,17 +96,17 @@ class Frequency : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun dosis(){
-        bindingF.txtDosis.setOnTouchListener { _, event ->
+        binding.txtDosis.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 val touchX = event.x.toInt() // Posición X del evento táctil
-                val imageWidth = bindingF.txtDosis.compoundDrawablesRelative[2]?.bounds?.width() ?: 0 // Ancho de la imagen
+                val imageWidth = binding.txtDosis.compoundDrawablesRelative[2]?.bounds?.width() ?: 0 // Ancho de la imagen
 
                 // Ajustar las coordenadas para la nueva posición del TextView
-                val textViewEndPosition = bindingF.txtDosis.width
+                val textViewEndPosition = binding.txtDosis.width
                 val touchThreshold = textViewEndPosition - imageWidth
 
                 // Verificar si el evento táctil ocurrió dentro de la región de la imagen
-                if (touchX >= bindingF.txtDosis.width - touchThreshold) {
+                if (touchX >= binding.txtDosis.width - touchThreshold) {
                     showWindowFloat(0.89,bindingVFD.root)
                 }
             }
@@ -118,7 +145,7 @@ class Frequency : AppCompatActivity() {
         }
     }
     private fun codeClick(vista: ConstraintLayout, event: MotionEvent,
-                           TextViewActividad: TextView
+                          TextViewActividad: TextView
     ): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             val touchX = event.x.toInt() // Posición X del evento táctil
@@ -147,11 +174,25 @@ class Frequency : AppCompatActivity() {
     }
     private fun showTimePicker(){
         val timepicker = TimePickerFragment{currentDate(it)}
-        timepicker.show(supportFragmentManager,"timepicker")
+        val fragmentManager = requireActivity().supportFragmentManager
+        timepicker.show(fragmentManager, "timepicker")
     }
 
     private fun currentDate(time : String) {
-        bindingF.txtHora.text = "$time"
+        binding.txtHora.text = "$time"
 
+    }
+
+    companion object {
+
+        @JvmStatic
+        fun newInstance(param1: String, param2: String,selectedItem: String) =
+            Frequency().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                    putString("selectedItem", selectedItem)
+                }
+            }
     }
 }
