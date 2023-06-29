@@ -72,6 +72,7 @@ class FrequencyData : Fragment() {
                 editor?.apply()
                 Navigation.findNavController(view).navigate(R.id.frequency)
 
+
             }else{
                 Toast.makeText(requireContext(), "Rellene los datos", Toast.LENGTH_SHORT).show()
             }

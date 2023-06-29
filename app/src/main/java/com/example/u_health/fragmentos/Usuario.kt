@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.u_health.Adapters.MedicamentosProvider
 import com.example.u_health.databinding.FragmentUsuarioBinding
+import com.example.u_health.model.Medicamentos
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
@@ -34,14 +37,14 @@ class Usuario : Fragment()
 
         if (Id != null)
         {
-            val usuario =fireDB.collection("Usuarios").document("Prueba")
+            val usuario =fireDB.collection("Usuarios").document(Id)
             usuario.get().addOnSuccessListener {
                 val altura=(it.get("Altura").toString().toDouble())
                 val edad=it.get("Edad").toString().toInt()
                 val peso=it.get("Peso").toString().toDouble()
                 val Peso_Ideal=(((altura*100)-100+((edad/10)*0.9))*2.2).roundToInt()
 
-                //binding.txtUsuario.text=it.get("Nombre").toString()
+                binding.txtUsuario.text=it.get("Nombres").toString()
                 binding.txtAltura.text="${(altura*100).roundToInt()} cm"
                 binding.txtPeso.text="$peso lbs"
                 binding.txtEdad.text="$edad años"
@@ -63,6 +66,7 @@ class Usuario : Fragment()
 
             }
         }
+
 
         return view
     }

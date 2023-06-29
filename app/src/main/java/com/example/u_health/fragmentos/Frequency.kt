@@ -13,18 +13,22 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.Navigation
+import com.example.u_health.Adapters.AdapterRecordatorios
+import com.example.u_health.Adapters.MedicamentosProvider
+import com.example.u_health.R
 import com.example.u_health.TimePickerFragment
 import com.example.u_health.databinding.FragmentFrequencyBinding
 import com.example.u_health.databinding.VistaFrecuenciaBinding
 import com.example.u_health.databinding.VistaFrecuenciaDosisBinding
-
-
+import com.example.u_health.model.Medicamentos
 
 
 class Frequency : Fragment() {
 
     private lateinit var cantidad : String
     private lateinit var popupWindow: PopupWindow
+    private lateinit var adapter_recordatorios : AdapterRecordatorios
     private var _binding: FragmentFrequencyBinding? = null
     private val binding get() = _binding!!
 
@@ -57,12 +61,18 @@ class Frequency : Fragment() {
 
         binding.btnSiguiente.setOnClickListener {
             if(!binding.txtHora.text.equals("Hora")&&
-                !binding.txtDosis.text.equals("Dosis")){
+                !binding.txtDosis.text.equals("Dosis"))
+            {
+
                 val sharedPreferences = context?.getSharedPreferences("mi_pref", Context.MODE_PRIVATE)
                 val medicamentoSeleccionado = sharedPreferences?.getString("selectedItem", "")
                 val frecuenciaDatosSeleccionado = sharedPreferences?.getString("frecuenciaDato", "")
                 val hora =  binding.txtHora.text.toString()
                 val dosis = binding.txtDosis.text.toString()
+
+                if (medicamentoSeleccionado != null && frecuenciaDatosSeleccionado != null)
+                { MedicamentosProvider.Recordatorios_Meds.add( Medicamentos(medicamentoSeleccionado,frecuenciaDatosSeleccionado,hora,dosis)) }
+
                 Toast.makeText(requireContext(), "Guardado", Toast.LENGTH_SHORT).show()
 
 
@@ -71,8 +81,10 @@ class Frequency : Fragment() {
                 val editor = sharedPreferences?.edit()
                 editor?.clear()
                 editor?.apply()
-
-            }else{
+                Navigation.findNavController(view).navigate(R.id.navigation_recordatorios)
+            }
+            else
+            {
                 Toast.makeText(requireContext(), "Rellene los datos", Toast.LENGTH_SHORT).show()
             }
         }
@@ -156,5 +168,8 @@ class Frequency : Fragment() {
         binding.txtHora.text = "$time"
 
     }
+
+    fun Add_Recordatorio()
+    {}
 
 }

@@ -59,6 +59,9 @@ class Informacion : Fragment() {
             startActivity(intent) }
 
 
+
+
+
         return view
     }
 
