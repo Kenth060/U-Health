@@ -13,13 +13,20 @@
         <action
             android:id="@+id/action_navigation_recordatorios_to_fragmentDatosSearch2"
             app:destination="@id/fragmentDatosSearch2" />
+        <action
+            android:id="@+id/action_navigation_recordatorios_to_vista_medicamento"
+            app:destination="@id/vista_medicamento" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_citas"
         android:name="com.example.u_health.fragmentos.FragmentCitas"
         android:label="@string/title_citas"
-        tools:layout="@layout/fragment_citas" />
+        tools:layout="@layout/fragment_citas" >
+        <action
+            android:id="@+id/action_navigation_citas_to_fragmentAddCita2"
+            app:destination="@id/fragmentAddCita" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_usuario"
@@ -65,6 +72,16 @@
             android:id="@+id/action_frequency_to_navigation_recordatorios"
             app:destination="@id/navigation_recordatorios" />
     </fragment>
+    <fragment
+        android:id="@+id/vista_medicamento"
+        android:name="com.example.u_health.vista_medicamento"
+        android:label="fragment_vista_medicamento"
+        tools:layout="@layout/fragment_vista_medicamento" />
+    <fragment
+        android:id="@+id/fragmentAddCita"
+        android:name="com.example.u_health.fragmentos.fragmentAddCita"
+        android:label="fragment_add_cita"
+        tools:layout="@layout/fragment_add_cita" />
 
 
 </navigation>

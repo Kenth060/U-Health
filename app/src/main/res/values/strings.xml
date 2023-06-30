@@ -44,5 +44,7 @@
     <string name="edad">Edad</string>
     <string name="peso_ideal">Peso ideal</string>
     <string name="title_citas">Citas</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="_20_00">20:00</string>
 
 </resources>

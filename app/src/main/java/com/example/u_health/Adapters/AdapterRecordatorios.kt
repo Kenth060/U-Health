@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.u_health.R
 import com.example.u_health.model.Medicamentos
 
-class AdapterRecordatorios(var recordatoriosList: MutableList<Medicamentos>) : RecyclerView.Adapter<RecordatoriosViewHolder>()
+class AdapterRecordatorios(var recordatoriosList: MutableList<Medicamentos>, val recordatoriosListener: RecordatoriosListener) : RecyclerView.Adapter<RecordatoriosViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordatoriosViewHolder
     {
@@ -20,9 +20,9 @@ class AdapterRecordatorios(var recordatoriosList: MutableList<Medicamentos>) : R
         val item=recordatoriosList[position]
         holder.render(item)
 
-        /*holder.itemView.setOnClickListener {
-            pastillasListener.onPastillaClicked(holder.Nombre_Pastilla.text.toString())
-        }*/
+        holder.itemView.setOnClickListener {
+           recordatoriosListener.onRecordatorioClicked(item)
+        }
     }
 
     override fun getItemCount(): Int = recordatoriosList.size
