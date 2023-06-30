@@ -1,28 +1,44 @@
 package com.example.u_health
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.u_health.Adapters.AdapterPastillas
 import com.example.u_health.Adapters.MedicamentosProvider
 import com.example.u_health.Adapters.PastillasListener
 import com.example.u_health.Adapters.PastillasViewHolder
+import com.example.u_health.databinding.ActivityCrearCuentaBinding
 import com.example.u_health.databinding.ActivityInformacionMedicamentosBinding
+import com.example.u_health.databinding.FragmentVistaMedicamentoBinding
 import javax.annotation.meta.When
 
 class informacion_medicamentos : AppCompatActivity() , PastillasListener
 {
-        //private lateinit var binding : ActivityInformacionMedicamentosBinding
-
+        private lateinit var binding:ActivityInformacionMedicamentosBinding
+        @SuppressLint("ResourceAsColor")
         override fun onCreate(savedInstanceState: Bundle?)
         {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_informacion_medicamentos)
-            initRecyclerView()
 
+            binding = ActivityInformacionMedicamentosBinding.inflate(layoutInflater)
+            val view= binding.root
+            setContentView(view)
+
+            val toolbar: Toolbar = findViewById<Toolbar>(R.id.tb_Info)
+            toolbar.title = getString(R.string.Informacion_Detalle)
+            toolbar.setNavigationIcon(R.drawable.ic_back)
+            toolbar.navigationIcon?.setTint(R.color.textologin)
+            toolbar.setNavigationOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.navigation_informacion)
+            }
+
+            initRecyclerView()
         }
 
         fun initRecyclerView()
@@ -80,21 +96,21 @@ class informacion_medicamentos : AppCompatActivity() , PastillasListener
         {
             val intent = Intent(this , Informacion_Detalle::class.java).apply {
                 putExtra("Pastilla",p)
-                putExtra("Tipo","AntiDepresivos")}
+                putExtra("Tipo","Antidepresivos")}
             startActivity(intent)
         }
         else if (opc == "5")
         {
             val intent = Intent(this , Informacion_Detalle::class.java).apply {
                 putExtra("Pastilla",p)
-                putExtra("Tipo","Diabetes")}
+                putExtra("Tipo","Medicamentos para la diabetes")}
             startActivity(intent)
         }
         else if (opc == "6")
         {
             val intent = Intent(this , Informacion_Detalle::class.java).apply {
                 putExtra("Pastilla",p)
-                putExtra("Tipo","Gripe")}
+                putExtra("Tipo","Medicamentos para la tos y gripe")}
             startActivity(intent)
         }
 
