@@ -27,11 +27,4 @@ class AdapterRecordatorios(var recordatoriosList: MutableList<Medicamentos>, val
 
     override fun getItemCount(): Int = recordatoriosList.size
 
-    fun Agregar(med: Medicamentos)
-    {
-        recordatoriosList.add(med)
-        notifyDataSetChanged()
-    }
-
-
 }

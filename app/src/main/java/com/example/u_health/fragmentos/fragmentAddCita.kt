@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.diseodatos.DatePickerFragment
+import com.example.u_health.Adapters.MedicamentosProvider
 import com.example.u_health.R
 import com.example.u_health.TimePickerFragment
 import com.example.u_health.databinding.FragmentAddCitaBinding
+import com.example.u_health.model.Citas
 
 class fragmentAddCita : Fragment()
 {
@@ -30,7 +32,7 @@ class fragmentAddCita : Fragment()
         val view = binding.root
 
         binding.btnCancelar.setOnClickListener {
-            Toast.makeText(requireContext(), "cancelar", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(view).navigate(R.id.navigation_citas)
         }
         binding.fecha.setOnClickListener {
             showDatePickerDialog()
@@ -38,6 +40,19 @@ class fragmentAddCita : Fragment()
         binding.hora.setOnClickListener {
             showTimePicker()
         }
+
+
+        binding.btnSave.setOnClickListener {
+            var Titulo = binding.txtEspecialidad.text.toString()
+            var Doctor = binding.txtDoctor.text.toString()
+            var Fecha_Cita=binding.txtFecha.text.toString()
+            var Hora = binding.txtHora.text.toString()
+            var Detalles = binding.txtDetalles.text.toString()
+
+            MedicamentosProvider.Recordatorios_Citas.add(Citas(Titulo,Doctor,Fecha_Cita,Hora,Detalles))
+            Navigation.findNavController(view).navigate(R.id.navigation_citas)
+        }
+
 
         return view
     }

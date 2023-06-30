@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -28,34 +28,34 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/chillydoctor" />
+            app:lottie_rawRes="@raw/blackdoctor" />
 
         <TextView
             android:layout_width="195dp"
             android:layout_height="wrap_content"
             android:background="@drawable/background_dialog"
             android:textAlignment="center"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="92dp"
             android:text="Presiona para mas detalles..."
             android:textColor="@color/Gray" />
 
 
         <TextView
-            android:id="@+id/txtNombrePastilla"
+            android:id="@+id/txtTituloCita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="95dp"
             android:layout_marginTop="10dp"
-            android:text="Nahum Gutierrez"
+            android:text="Ortopedia"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold|italic" />
 
         <TextView
-            android:id="@+id/txtCantidadPills"
-            android:layout_width="160dp"
+            android:id="@+id/txtFechaCita"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="88dp"

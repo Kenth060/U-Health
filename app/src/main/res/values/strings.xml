@@ -46,5 +46,11 @@
     <string name="title_citas">Citas</string>
     <string name="eliminar">Eliminar</string>
     <string name="_20_00">20:00</string>
+    <string name="especialidad">Titulo</string>
+    <string name="doctor">Doctor</string>
+    <string name="dd_mm_yyyy">dd/mm/yyyy</string>
+    <string name="fecha">Fecha</string>
+    <string name="Guardar">Guardar</string>
+    <string name="detalle">Detalles</string>
 
 </resources>

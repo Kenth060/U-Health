@@ -9,20 +9,21 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/InfoRecordatorio"
         android:layout_width="370dp"
-        android:layout_height="280dp"
+        android:layout_height="330dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/borde"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView2"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="84dp"
             android:layout_marginLeft="130dp"
             android:scaleType="centerInside"
             app:lottie_autoPlay="true"
@@ -30,42 +31,69 @@
             app:lottie_rawRes="@raw/calendar3" />
 
         <TextView
-            android:id="@+id/txtPastilla_Recordatorio"
+            android:id="@+id/txtProximaCita"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:layout_marginTop="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
             android:text="Proximas Citas."
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="21sp"
+            android:textSize="20sp"
             android:textStyle="bold|italic" />
 
         <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="110dp"
+            android:text="Medico Cirujano"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/txtFechaCitaDet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="150dp"
             android:text="Mañana"
-            android:textSize="22sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
         <TextView
+            android:id="@+id/txtHoraDet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
             android:layout_marginLeft="250dp"
+            android:layout_marginTop="150dp"
             android:text="9:00am"
-            android:textSize="21sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
         <TextView
+            android:id="@+id/txtCita_Detalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="190dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="190dp"
             android:text="Informacion"
-            android:textSize="20sp"
-            android:textColor="@color/Gray" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtCita_Info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="225dp"
+            android:text="Doctor viper, doctor viper, que puedo comer para no seguir subiendo de peso."
+            android:textColor="@color/Gray"
+            android:textSize="20sp" />
 
 
 
@@ -89,8 +117,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.035">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView1"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="110dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/blackdoctor" />
+
         <TextView
-            android:id="@+id/txtInfoPastilla"
+            android:id="@+id/txtInfoDr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
@@ -101,15 +138,6 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold|italic" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieAnimationView1"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginStart="110dp"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/blackdoctor" />
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

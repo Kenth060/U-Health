@@ -1,21 +1,23 @@
 package com.example.u_health.fragmentos
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
-import com.example.diseodatos.DatePickerFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.u_health.Adapters.AdapterCitas
+import com.example.u_health.Adapters.CitasListener
+import com.example.u_health.Adapters.MedicamentosProvider
 import com.example.u_health.R
-import com.example.u_health.TimePickerFragment
 import com.example.u_health.databinding.FragmentCitasBinding
-import com.example.u_health.databinding.FragmentRecordatoriosBinding
-import java.util.Calendar
+import com.example.u_health.model.Citas
 
 
-class FragmentCitas : Fragment()
+class FragmentCitas : Fragment(),CitasListener
 {
 
     private var _binding: FragmentCitasBinding? = null
@@ -33,6 +35,7 @@ class FragmentCitas : Fragment()
         _binding = FragmentCitasBinding.inflate(inflater, container, false)
         val view = binding.root
 
+
         binding.btnAddCita.setOnClickListener {
 
             Navigation.findNavController(view).navigate(R.id.fragmentAddCita)
@@ -40,14 +43,30 @@ class FragmentCitas : Fragment()
             binding.btnAddCita.visibility = View.INVISIBLE
         }
 
-
-
-
-
+        initRecyclerView()
 
         return view
     }
 
+    private fun initRecyclerView()
+    {
+        val rv = binding.rvCitas
+        rv.layoutManager = LinearLayoutManager(requireContext())
+        rv.adapter= AdapterCitas(MedicamentosProvider.Recordatorios_Citas,this)
+    }
+
+    override fun onCitaClicked(C: Citas)
+    {
+        view?.let { Navigation.findNavController(it).navigate(R.id.fragment_Recordatorio_Medico) }
+        val Preferencias: SharedPreferences? = context?.getSharedPreferences("Datos_Citas", Context.MODE_PRIVATE)
+        val editor = Preferencias?.edit()
+        editor?.putString("Titulo", C.Titulo)
+        editor?.putString("Medico",C.Medico)
+        editor?.putString("Fecha", C.Fecha)
+        editor?.putString("Hora", C.Hora)
+        editor?.putString("Detalles", C.Detalles)
+        editor?.apply()
+    }
 
 
 }

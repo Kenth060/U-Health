@@ -98,11 +98,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="36dp"
-        android:backgroundTint="@color/Blue"
+        android:backgroundTint="#E3E3E3"
         android:text="Hora"
         android:textAlignment="textStart"
 
-        android:textColor="@color/black"
+        android:textColor="@color/textologin"
         android:textSize="18dp"
         app:layout_constraintTop_toBottomOf="@+id/cvmedicamento"
         tools:layout_editor_absoluteX="20dp">
