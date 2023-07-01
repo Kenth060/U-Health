@@ -47,7 +47,6 @@ class FragmentCitas : Fragment() {
     ): View? {
         _binding = FragmentCitasBinding.inflate(inflater, container, false)
         val view = binding.root
-        //Jesus
 
         createNotificacionChannnel()
         binding.btnSave.setOnClickListener {
@@ -87,13 +86,12 @@ class FragmentCitas : Fragment() {
         val timeFormat = android.text.format.DateFormat.getTimeFormat(requireContext())
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Notificacion")
+            .setTitle("dkjsadada")
             .setMessage(
                 "title" + title+
                         "\nMessage: "+message+
                         "\nAt: "+dateFormat.format(date) + " "+timeFormat.format(date))
             .setPositiveButton("okay"){_,_ ->}
-            .setNegativeButton("Cancelar"){_,_ ->}
             .show()
     }
 
