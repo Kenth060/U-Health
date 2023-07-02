@@ -1,14 +1,11 @@
-package com.example.u_health.View.fragmentos
+package com.example.u_health.fragmentos
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
-import androidx.navigation.Navigation
 import com.example.u_health.R
 import com.example.u_health.databinding.FragmentCitasBinding
 import com.example.u_health.databinding.FragmentRecordatorioMedicoBinding
@@ -25,7 +22,6 @@ class fragment_Recordatorio_Medico : Fragment()
 
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,15 +30,6 @@ class fragment_Recordatorio_Medico : Fragment()
         // Inflate the layout for this fragment
         _binding = FragmentRecordatorioMedicoBinding.inflate(inflater, container, false)
         val view = binding.root
-
-
-        val toolbar: Toolbar = binding.tbCitasDetalles
-        toolbar.title="Detalles de la cita"
-        toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.navigationIcon?.setTint(R.color.textologin)
-        toolbar.setNavigationOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.navigation_citas)
-        }
 
         val Prefencias = context?.getSharedPreferences("Datos_Citas", Context.MODE_PRIVATE)
         val Titulo = Prefencias?.getString("Titulo", "")

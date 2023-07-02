@@ -6,12 +6,18 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.SET_ALARM"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!--notificacion-->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,36 +28,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UHealth"
         tools:targetApi="33">
+        <activity
+            android:name=".Informacion_Detalle"
+            android:exported="false" />
+        <activity
+            android:name=".informacion_medicamentos"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".View.fragmentos.FrequencyData"
+            android:name=".fragmentos.FrequencyData"
             android:exported="false" />
         <activity
-            android:name=".View.fragmentos.Frequency"
+            android:name=".fragmentos.Frequency"
             android:exported="false" />
         <activity
-            android:name=".View.Menu"
+            android:name=".Menu"
             android:exported="false"
             android:label="@string/title_activity_menu" />
         <activity
-            android:name=".View.CrearPerfil"
+            android:name=".CrearPerfil"
             android:exported="false" />
         <activity
-            android:name=".View.CrearCuenta"
+            android:name=".CrearCuenta"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".View.Login" />
+                android:value=".Login" />
         </activity>
         <activity
-            android:name=".View.Login"
+            android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".View.SplashScreen"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,7 +72,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.MainActivity"
+            android:name=".MainActivity"
             android:exported="false" />
 
         <meta-data

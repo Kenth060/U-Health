@@ -1,4 +1,4 @@
-package com.example.u_health.View
+package com.example.u_health
 
 
 import android.content.Intent
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.u_health.R
 import com.example.u_health.databinding.ActivityLoginBinding
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn

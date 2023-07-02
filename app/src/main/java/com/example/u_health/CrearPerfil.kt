@@ -1,11 +1,13 @@
-package com.example.u_health.View
+package com.example.u_health
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
@@ -16,14 +18,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.u_health.View.fragmentos.DatePickerFragment
-import com.example.u_health.R
+import com.example.diseodatos.DatePickerFragment
 import com.example.u_health.databinding.ActivityCrearPerfilBinding
 import com.example.u_health.databinding.VistaAlturaBinding
 import com.example.u_health.databinding.VistaEnfermedadBinding
 import com.example.u_health.databinding.VistaGeneroBinding
 import com.example.u_health.databinding.VistaPesoBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 

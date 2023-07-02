@@ -1,4 +1,4 @@
-package com.example.u_health.View.fragmentos
+package com.example.u_health
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.u_health.Adapters.MedicamentosProvider
-import com.example.u_health.R
 import com.example.u_health.databinding.FragmentVistaMedicamentoBinding
 import com.example.u_health.model.Medicamentos
 
