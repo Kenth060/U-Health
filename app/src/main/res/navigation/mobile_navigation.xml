@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_recordatorios"
-        android:name="com.example.u_health.fragmentos.Recordatorios"
+        android:name="com.example.u_health.View.fragmentos.Recordatorios"
         android:label="@string/title_recordatorios"
         tools:layout="@layout/fragment_recordatorios" >
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_citas"
-        android:name="com.example.u_health.fragmentos.FragmentCitas"
+        android:name="com.example.u_health.View.fragmentos.FragmentCitas"
         android:label="@string/title_citas"
         tools:layout="@layout/fragment_citas" >
         <action
@@ -33,24 +33,28 @@
 
     <fragment
         android:id="@+id/navigation_usuario"
-        android:name="com.example.u_health.fragmentos.Usuario"
+        android:name="com.example.u_health.View.fragmentos.Usuario"
         android:label="@string/title_usuario"
         tools:layout="@layout/fragment_usuario" />
 
     <fragment
         android:id="@+id/navigation_informacion"
-        android:name="com.example.u_health.fragmentos.Informacion"
+        android:name="com.example.u_health.View.fragmentos.Informacion"
         android:label="@string/title_informacion"
-        tools:layout="@layout/fragment_informacion" />
+        tools:layout="@layout/fragment_informacion" >
+        <action
+            android:id="@+id/action_navigation_informacion_to_informacion_Medicamentos"
+            app:destination="@id/informacion_Medicamentos" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_mapa"
-        android:name="com.example.u_health.fragmentos.Mapa"
+        android:name="com.example.u_health.View.fragmentos.Mapa"
         android:label="@string/title_mapa"
         tools:layout="@layout/fragment_mapa" />
     <fragment
         android:id="@+id/fragmentDatosSearch2"
-        android:name="com.example.u_health.fragmentos.FragmentDatosSearch"
+        android:name="com.example.u_health.View.fragmentos.FragmentDatosSearch"
         android:label="fragment_datos_search"
         tools:layout="@layout/fragment_datos_search" >
         <action
@@ -59,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/frequencyData"
-        android:name="com.example.u_health.fragmentos.FrequencyData"
+        android:name="com.example.u_health.View.fragmentos.FrequencyData"
         android:label="fragment_frequency_data"
         tools:layout="@layout/fragment_frequency_data" >
         <action
@@ -68,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/frequency"
-        android:name="com.example.u_health.fragmentos.Frequency"
+        android:name="com.example.u_health.View.fragmentos.Frequency"
         android:label="fragment_frequency"
         tools:layout="@layout/fragment_frequency" >
         <action
@@ -77,19 +81,33 @@
     </fragment>
     <fragment
         android:id="@+id/vista_medicamento"
-        android:name="com.example.u_health.vista_medicamento"
+        android:name="com.example.u_health.View.fragmentos.vista_medicamento"
         android:label="fragment_vista_medicamento"
         tools:layout="@layout/fragment_vista_medicamento" />
     <fragment
         android:id="@+id/fragmentAddCita"
-        android:name="com.example.u_health.fragmentos.fragmentAddCita"
+        android:name="com.example.u_health.View.fragmentos.fragmentAddCita"
         android:label="fragment_add_cita"
         tools:layout="@layout/fragment_add_cita" />
     <fragment
         android:id="@+id/fragment_Recordatorio_Medico"
-        android:name="com.example.u_health.fragmentos.fragment_Recordatorio_Medico"
+        android:name="com.example.u_health.View.fragmentos.fragment_Recordatorio_Medico"
         android:label="fragment_recordatorio_medico"
         tools:layout="@layout/fragment_recordatorio_medico" />
+    <fragment
+        android:id="@+id/informacion_Medicamentos"
+        android:name="com.example.u_health.Informacion_Medicamentos"
+        android:label="fragment_informacion__medicamentos"
+        tools:layout="@layout/fragment_informacion__medicamentos" >
+        <action
+            android:id="@+id/action_informacion_Medicamentos_to_informacion_Detalle"
+            app:destination="@id/informacion_Detalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/informacion_Detalle"
+        android:name="com.example.u_health.Informacion_Detalle"
+        android:label="fragment_informacion__detalle"
+        tools:layout="@layout/fragment_informacion__detalle" />
 
 
 </navigation>

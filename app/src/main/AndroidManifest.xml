@@ -29,10 +29,10 @@
         android:theme="@style/Theme.UHealth"
         tools:targetApi="33">
         <activity
-            android:name=".Informacion_Detalle"
+            android:name=".View.fragmentos.Informacion_Detalle"
             android:exported="false" />
         <activity
-            android:name=".informacion_medicamentos"
+            android:name=".View.fragmentos.informacion_medicamentos"
             android:exported="false" />
 
         <meta-data
@@ -40,30 +40,30 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".fragmentos.FrequencyData"
+            android:name=".View.fragmentos.FrequencyData"
             android:exported="false" />
         <activity
-            android:name=".fragmentos.Frequency"
+            android:name=".View.fragmentos.Frequency"
             android:exported="false" />
         <activity
-            android:name=".Menu"
+            android:name=".View.Menu"
             android:exported="false"
             android:label="@string/title_activity_menu" />
         <activity
-            android:name=".CrearPerfil"
+            android:name=".View.CrearPerfil"
             android:exported="false" />
         <activity
-            android:name=".CrearCuenta"
+            android:name=".View.CrearCuenta"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Login" />
+                android:value=".View.Login" />
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".View.Login"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".View.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -72,7 +72,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".View.MainActivity"
             android:exported="false" />
 
         <meta-data

@@ -1,15 +1,14 @@
-package com.example.u_health
+package com.example.u_health.View
 
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
+import com.example.u_health.R
 import com.example.u_health.databinding.ActivityCrearCuentaBinding
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.delay
 
 class CrearCuenta : AppCompatActivity()
 {

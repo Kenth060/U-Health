@@ -1,4 +1,4 @@
-package com.example.u_health
+package com.example.u_health.View
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.navigation.Navigation
+import com.example.u_health.R
 import com.example.u_health.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity()
@@ -26,7 +25,8 @@ class SplashScreen : AppCompatActivity()
 
             val LogoApp: ImageView = binding.imgSplashScreen
             val AnimLogo: Animation = AnimationUtils.loadAnimation(this,
-                R.anim.anim1)
+                R.anim.anim1
+            )
             LogoApp.startAnimation(AnimLogo)
 
             val intent = Intent(this, Menu::class.java)

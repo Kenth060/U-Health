@@ -1,4 +1,4 @@
-package com.example.u_health.fragmentos
+package com.example.u_health.View.fragmentos
 
 import android.content.Context
 import android.content.SharedPreferences

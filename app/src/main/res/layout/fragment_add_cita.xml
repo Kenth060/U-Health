@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/GrisClarito"
-    tools:context=".fragmentos.fragmentAddCita">
+    tools:context=".View.fragmentos.fragmentAddCita">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/abCitas"

@@ -1,4 +1,4 @@
-package com.example.u_health
+package com.example.u_health.View
 
 
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.example.u_health.fragmentos
+package com.example.u_health.View.fragmentos
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -125,7 +125,8 @@ class Mapa : Fragment() , OnMapReadyCallback {
         else
         {
             ActivityCompat.requestPermissions(this.requireActivity(),
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE_LOCATION)
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE_LOCATION
+            )
         }
     }
 

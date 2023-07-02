@@ -6,7 +6,7 @@
     android:layout_width="410dp"
     android:layout_height="350dp"
     android:background="@drawable/borde"
-    tools:context=".MainActivity">
+    tools:context=".View.MainActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/iconAtrasPeso"

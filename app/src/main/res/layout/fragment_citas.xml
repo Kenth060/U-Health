@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/fondo"
     android:id="@+id/fragmentCitas"
-    tools:context=".fragmentos.FragmentCitas">
+    tools:context=".View.fragmentos.FragmentCitas">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/abCitas"

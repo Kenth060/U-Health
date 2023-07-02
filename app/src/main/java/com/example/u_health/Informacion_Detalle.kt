@@ -1,40 +1,60 @@
 package com.example.u_health
 
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import com.example.u_health.databinding.ActivityInformacionDetalleBinding
-import com.example.u_health.databinding.FragmentUsuarioBinding
+import androidx.navigation.Navigation
+import com.example.u_health.databinding.FragmentInformacionDetalleBinding
+import com.example.u_health.databinding.FragmentInformacionMedicamentosBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class Informacion_Detalle : AppCompatActivity()
-{
+private var fbinding: FragmentInformacionDetalleBinding? = null
+private val binding get() = fbinding!!
 
+class Informacion_Detalle : Fragment()
+{
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_informacion_detalle)
+    }
+
+    @SuppressLint("ResourceAsColor")
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View?
+    {
+        fbinding = FragmentInformacionDetalleBinding.inflate(inflater, container, false)
+        val view: View = binding.root
+
+        val toolbar: Toolbar = binding.tbInformacionDetalles
+        toolbar.title = getString(R.string.Informacion_Detalle)
+        toolbar.setNavigationIcon(R.drawable.ic_back)
+        toolbar.navigationIcon?.setTint(R.color.textologin)
+        toolbar.setNavigationOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.informacion_Medicamentos)
+        }
 
 
-        val toolbar: Toolbar = findViewById<Toolbar>(R.id.tbInformacionDetalles)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.title = getString(R.string.Informacion_Detalle)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        val Prefencias = context?.getSharedPreferences("Datos_Informacion", Context.MODE_PRIVATE)
+        val Pastilla=  Prefencias?.getString("Pastilla","")
+        val Tipo=  Prefencias?.getString("Tipo","")
 
-        val Pastilla= intent.getStringExtra("Pastilla")
-        val Tipo= intent.getStringExtra("Tipo")
-
-        val Nombre_Pastilla=findViewById<TextView>(R.id.txtNombrePastilla)
-        val Informacion=findViewById<TextView>(R.id.txtInfo)
-        val usos=findViewById<TextView>(R.id.txtUsosContent)
-        val Riesgos=findViewById<TextView>(R.id.txtRiesgos)
+        val Nombre_Pastilla=binding.txtNombrePastilla
+        val Informacion=binding.txtInfo
+        val usos=binding.txtUsosContent
+        val Riesgos=binding.txtRiesgos
 
         Nombre_Pastilla.text=Pastilla
         val fireDB: FirebaseFirestore = FirebaseFirestore.getInstance()
-        val auth : FirebaseAuth = FirebaseAuth.getInstance()
 
         if(Tipo!=null && Pastilla!= null)
         {
@@ -47,5 +67,6 @@ class Informacion_Detalle : AppCompatActivity()
             }
         }
 
+        return view
     }
 }

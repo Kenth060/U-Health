@@ -1,16 +1,13 @@
-package com.example.u_health.fragmentos
+package com.example.u_health.View.fragmentos
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.example.diseodatos.DatePickerFragment
 import com.example.u_health.Adapters.MedicamentosProvider
 import com.example.u_health.R
-import com.example.u_health.TimePickerFragment
 import com.example.u_health.databinding.FragmentAddCitaBinding
 import com.example.u_health.model.Citas
 
