@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,78 +9,25 @@
     android:id="@+id/fragmentCitas"
     tools:context=".View.fragmentos.FragmentCitas">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/abCitas"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCitas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Azul_Claro"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_citas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
-
-            <Button
-                android:id="@+id/btn_cancelar"
-                style="@style/ButtonNoBorder"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/borde_null"
-                android:text="Cancelar"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <androidx.constraintlayout.utils.widget.MotionButton
-        android:id="@+id/btnSave"
-        android:layout_width="405dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="184dp"
+    <ImageButton
+        android:id="@+id/btnAddCita"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/background_button"
-        android:text="Guardar"
-        android:textColor="@color/white"
+        android:src="@drawable/btn_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="182dp"
-        android:layout_height="168dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="100dp"
-        android:layout_weight="1"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
-        app:layout_constraintEnd_toStartOf="@+id/timePicker"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/abCitas" />
-
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="182dp"
-        android:layout_height="168dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="1"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
-        android:timePickerMode="spinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/abCitas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
